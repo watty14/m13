@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "WALLT": {
+            "applicationId": "Cnmqzdi7YSCSGPBixx11Mjvu6tF8mpzTZ9yObsM1", 
+            "masterKey": "XaHaF0wpcHPuryHm93JHXyAsw7DdMasc8pxmY5Xk"
+        }, 
+        "_default": {
+            "link": "WALLT"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

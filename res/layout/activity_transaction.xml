@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionActivity" >
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/amount_field" />
+
+    <EditText
+        android:id="@+id/amount_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/reason_field"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/amount_hint"
+        android:inputType="number" />
+    
+    <EditText
+        android:id="@+id/reason_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deposit_button"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/reason_hint"
+        android:inputType="text" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/deposit_button"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/transactionhistory_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="54dp"
+        android:text="@string/transactionhistory_button_label" />
+
+    <Button
+        android:id="@+id/withdraw_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/transactionhistory_button"
+        android:layout_alignParentLeft="true"
+        android:text="@string/withdraw_button_label" />
+
+    <Button
+        android:id="@+id/deposit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/withdraw_button"
+        android:layout_alignParentLeft="true"
+        android:text="@string/deposit_button_label" />
+
+</RelativeLayout>

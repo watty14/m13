@@ -1,0 +1,71 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top">
+
+	<LinearLayout
+	    android:baselineAligned="false"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingTop="13dp"
+	    android:paddingBottom="12dp">
+	    
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_marginBottom="1dp"
+	        android:layout_marginLeft="13dp"
+	        android:layout_marginRight="4dp"
+	        android:layout_weight="0.10"
+	        android:orientation="vertical" >
+	        
+	        <TextView
+	        android:id="@+id/bankName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />  
+	        
+	        <TextView
+	        android:id="@+id/accountNumber"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceMedium" /> 
+	        
+	   </LinearLayout>
+	
+	
+	   <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_marginBottom="1dp"
+	        android:layout_marginLeft="13dp"
+	        android:layout_marginRight="4dp"
+	        android:layout_weight="0.10"
+	        android:orientation="vertical" >
+	        
+	        <TextView
+	        android:id="@+id/balance"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceLarge" /> 
+	        
+	   </LinearLayout>
+	        
+		
+	</LinearLayout>
+
+	<View
+	    android:background="#444444"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginRight="15dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="1px"
+	    android:layout_gravity="bottom"
+	    android:id="@+id/divider"/>
+	
+</FrameLayout>
