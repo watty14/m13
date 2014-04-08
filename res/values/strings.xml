@@ -64,5 +64,6 @@
     <string name="deposit_button_label">Deposit</string>
     <string name="withdraw_button_label">Withdraw</string>
     <string name="transactionhistory_button_label">Transaction History</string>
+    <string name="transactiongraphhistory_button_label">Transaction Graph History</string>
 
 </resources>

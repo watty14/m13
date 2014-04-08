@@ -19,6 +19,7 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 
 
 
@@ -34,6 +35,7 @@ public class TransactionActivity extends Fragment {
    private Button mDeposit;
    private Button mWithdraw;
    private Button mTransactionHistory;
+   private Button mTransactionGraphHistory;
    private EditText mAmount;
    private EditText mReason;
    private ProgressBar mProgressBar;
@@ -69,6 +71,7 @@ public class TransactionActivity extends Fragment {
         mDeposit = (Button) fragmentView.findViewById(R.id.deposit_button);
         mWithdraw = (Button) fragmentView.findViewById(R.id.withdraw_button);
         mTransactionHistory = (Button) fragmentView.findViewById(R.id.transactionhistory_button);
+        mTransactionGraphHistory = (Button) fragmentView.findViewById(R.id.lineGraph);
         mAmount = (EditText) fragmentView.findViewById(R.id.amount_field);
         mReason = (EditText) fragmentView.findViewById(R.id.reason_field);
         mProgressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar1);
@@ -105,6 +108,15 @@ public class TransactionActivity extends Fragment {
 			    frag.setArguments(i);
             	((MainActivity) parentActivity).addFragment(frag,
             			getString(R.string.title_activity_transactionhistory));
+            }
+        });
+        
+        mTransactionGraphHistory.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+			    TransactionGraphHistoryActivity line = new TransactionGraphHistoryActivity();
+		    	Intent lineIntent = line.getIntent(getActivity());
+		    	startActivity(lineIntent);
             }
         });
         return fragmentView;
@@ -271,5 +283,4 @@ public class TransactionActivity extends Fragment {
 	        return false;
 	    }
 	}
-
 }

@@ -64,4 +64,12 @@
         android:layout_alignParentLeft="true"
         android:text="@string/deposit_button_label" />
 
+    <Button
+        android:id="@+id/lineGraph"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/transactiongraphhistory_button_label" />
+
 </RelativeLayout>

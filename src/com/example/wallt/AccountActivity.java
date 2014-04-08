@@ -21,8 +21,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class AccountActivity extends Fragment {
-	
+	public class AccountActivity extends Fragment {
+
 	private View fragment;
 	private ListView listView;
 	private ArrayList<BankAccount> list;
@@ -30,9 +30,9 @@ public class AccountActivity extends Fragment {
 	private ServerUtility instance;
 	private List<BankAccount> accounts;
 	private ProgressBar mProgressBar;
-   
+
     @Override
-	public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
@@ -97,14 +97,14 @@ public class AccountActivity extends Fragment {
         			getString(R.string.Settings));
             break;
         }
-        
+
         default:
             super.onOptionsItemSelected(item);
         }
         return true;
-        
+
     }
-	
+
 	public List<BankAccount> getDataForListView() {
 		ArrayList<BankAccount> list = new ArrayList<BankAccount>();
 		return list;
