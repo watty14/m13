@@ -114,7 +114,11 @@ public class TransactionActivity extends Fragment {
         mTransactionGraphHistory.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Bundle i = new Bundle();
+            	i.putString("ID", objectID);
+            	i.putString("BANKNAME", bankname);
 			    TransactionGraphHistoryActivity line = new TransactionGraphHistoryActivity();
+			    line.putBundle(i);
 		    	Intent lineIntent = line.getIntent(getActivity());
 		    	startActivity(lineIntent);
             }

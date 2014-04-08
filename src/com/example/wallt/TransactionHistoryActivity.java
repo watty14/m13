@@ -44,8 +44,8 @@ public class TransactionHistoryActivity extends Fragment {
 		parentActivity = getActivity();
 		mProgressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar1);
 		listView = (ListView) fragmentView.findViewById(R.id.listView);
-		
-	    
+
+
 	    Bundle data = getArguments();
 	    objectID = data.getString("ID");
 	    bankname = data.getString("BANKNAME");
@@ -121,12 +121,12 @@ public class TransactionHistoryActivity extends Fragment {
 	    public long getItemId(int i) {
 	        return i;
 	    }
-	
+
 	    @Override
 	    public boolean hasStableIds() {
 	        return false;
 	    }
-	
+
 	    @Override
 	    public View getView(int i, View view, ViewGroup viewGroup) {	
 	    	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
