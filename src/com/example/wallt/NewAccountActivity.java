@@ -17,26 +17,28 @@ import android.widget.Toast;
 
 
 public class NewAccountActivity extends Fragment {
-	
+
     private View fragmentView;
     private Activity parentActivity;
     private ServerUtility instance;
-    
+
     private EditText mBankNameField;
-	private EditText mAccountNumberField;
-	private EditText mBalanceField;
-	private Button mCreateAccountButton;
-	private ProgressBar mProgressBar;
+    private EditText mAccountNumberField;
+    private EditText mBalanceField;
+    private Button mCreateAccountButton;
+    private ProgressBar mProgressBar;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	fragmentView = inflater.inflate(R.layout.activity_new_account, container, false);
+	public final View onCreateView(final LayoutInflater inflater,
+    	final ViewGroup container, final Bundle savedInstanceState) {
+    	fragmentView = inflater.inflate(R.layout.
+    			activity_new_account, container, false);
     	instance = ServerUtility.getInstance();
     	fragmentView.setOnTouchListener(new GestureListener() {
             public void onSwipeRight() {
@@ -44,23 +46,35 @@ public class NewAccountActivity extends Fragment {
             }
         });
     	parentActivity = getActivity();
-    	mBankNameField = (EditText) fragmentView.findViewById(R.id.bankname_field);
-		mAccountNumberField = (EditText) fragmentView.findViewById(R.id.accountnumber_field);
-		mBalanceField = (EditText) fragmentView.findViewById(R.id.balance_field);
-		mCreateAccountButton = (Button) fragmentView.findViewById(R.id.createaccount_button);
-		mProgressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar1);
-		mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+    	mBankNameField = (EditText) fragmentView.
+    			findViewById(R.id.bankname_field);
+		mAccountNumberField = (EditText) fragmentView.
+				findViewById(R.id.accountnumber_field);
+		mBalanceField = (EditText) fragmentView.
+				findViewById(R.id.balance_field);
+		mCreateAccountButton = (Button) fragmentView.
+				findViewById(R.id.createaccount_button);
+		mProgressBar = (ProgressBar) fragmentView.
+				findViewById(R.id.progressBar1);
+		mCreateAccountButton.setOnClickListener(
+				new View.OnClickListener() {
 			@Override
-			public void onClick(View v) {	
-				String bankName = mBankNameField.getText().toString();
-				String accountNumber = mAccountNumberField.getText().toString();
-				String balance = mBalanceField.getText().toString();
-				if (bankName.equals("") || accountNumber.equals("") || balance.equals("")) {
-					Toast.makeText(parentActivity, "Invalid Input", 
-							Toast.LENGTH_SHORT).show();
+			public void onClick(final View v) {
+				String bankName = mBankNameField.getText().
+						toString();
+				String accountNumber = mAccountNumberField.
+						getText().toString();
+				String balance = mBalanceField.getText().
+						toString();
+				if (bankName.equals("") || accountNumber.
+					equals("") || balance.equals("")) {
+					Toast.makeText(parentActivity,
+							"Invalid Input",
+						Toast.LENGTH_SHORT).show();
 				} else {
-					new AsyncTaskCreateBankAccount().execute(bankName,
-	                        accountNumber, balance);
+					new AsyncTaskCreateBankAccount().
+						execute(bankName, accountNumber,
+								balance);
 	                    mProgressBar.setVisibility(View.VISIBLE);
 	                    mCreateAccountButton.setVisibility(View.INVISIBLE);
 				}
@@ -69,28 +83,30 @@ public class NewAccountActivity extends Fragment {
 		});
         return fragmentView;
     }
-    
-	
+
 	@Override
-	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+	public final void onCreateOptionsMenu(final Menu menu,
+			final MenuInflater inflater) {
 	    super.onCreateOptionsMenu(menu, inflater);
 	    parentActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
 	    parentActivity.setTitle(getString(R.string.NewAccount));
 	    inflater.inflate(R.menu.new_account, menu);
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public final boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			if (getFragmentManager().getBackStackEntryCount() > 1) {
 				((MainActivity) parentActivity).finishFragment();
 	        }
 			return true;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	private class AsyncTaskCreateBankAccount
     	extends AsyncTask<String, Void, Boolean> {
 
@@ -120,7 +136,8 @@ public class NewAccountActivity extends Fragment {
 		                } catch (InterruptedException e) {
 		                    //do nothing
 		                } finally {
-		                	((MainActivity) parentActivity).finishFragment();
+		                	((MainActivity) parentActivity).
+		                	finishFragment();
 		                }
 		            }
 		        };

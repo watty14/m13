@@ -7,10 +7,11 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 public class GestureListener implements OnTouchListener {
-    private float downX, downY;
-    private boolean discard = false;
 
-    public boolean onTouch(View v, MotionEvent event) {
+	private float downX, downY;
+	private boolean discard = false;
+
+	public boolean onTouch(View v, MotionEvent event) {
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN: {
                 downX = event.getX();
@@ -45,6 +46,8 @@ public class GestureListener implements OnTouchListener {
                 onTouchUp(event);
                 return false;
             }
+		default:
+			break;
         }
         return false;
     }

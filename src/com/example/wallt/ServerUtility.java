@@ -18,9 +18,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class ServerUtility {
-	
+
 	//Table names
-	
+
     /**
     *
     */
@@ -99,10 +99,10 @@ public class ServerUtility {
    public static final String COLUMN_TRANSACTIONREASON = "reason";
 
     private static ServerUtility instance = null;
-    
+
     private final String applicationID =
         "Cnmqzdi7YSCSGPBixx11Mjvu6tF8mpzTZ9yObsM1";
-    
+
     private final String clientKey =
         "xeJa7O6dzR8oulCfD31cmUwI3frlngCFSY1jSEr8";
 
@@ -124,12 +124,13 @@ public class ServerUtility {
     public boolean isAlreadyLoggedIn() {
         return ParseUser.getCurrentUser() != null;
     }
-    
+
     public void logOutUser() {
     	ParseUser.logOut();
     }
 
-    public boolean logInUser(String username, String password) {
+    public boolean logInUser(final String username,
+    		final String password) {
         ParseUser user = null;
         try {
             user = ParseUser.logIn(username, password);
@@ -139,7 +140,8 @@ public class ServerUtility {
         return user != null;
     }
 
-    public Boolean signUpUser(String username, String email, String password) {
+    public Boolean signUpUser(final String username,
+    		final String email, final String password) {
         ParseUser user = new ParseUser();
         boolean created = false;
         user.setUsername(username);
@@ -154,15 +156,15 @@ public class ServerUtility {
         }
         return created;
     }
-    
+
     public String getCurrentUsername() {
     	return ParseUser.getCurrentUser().getUsername();
     }
-    
+
     public String getCurrentEmail() {
     	return ParseUser.getCurrentUser().getEmail();
     }
-    
+
     public ArrayList<BankAccount> getBankAccounts() {
         String username = ParseUser.getCurrentUser().getUsername();
         String[] references = getBankAccountReferences(username);
@@ -172,8 +174,8 @@ public class ServerUtility {
         }
         return list;
     }
-    
-    public boolean createNewBankAccount(BankAccount account) {
+
+    public boolean createNewBankAccount(final BankAccount account) {
         boolean created = false;
         String username = ParseUser.getCurrentUser().getUsername();
         ParseObject owner = getOwner(username);
@@ -186,8 +188,8 @@ public class ServerUtility {
         }
         return created;
     }
-    
-    private String[] getBankAccountReferences(String username) {
+
+    private String[] getBankAccountReferences(final String username) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(TABLE_OWNER);
         query.whereEqualTo(COLUMN_USERNAME, username);
         JSONArray jsonReferences = null;
@@ -209,8 +211,9 @@ public class ServerUtility {
         }
         return references;
     }
-    
-    private static List<BankAccount> getBankAccountsHelper(String[] linkReferences) {
+
+    private static List<BankAccount> getBankAccountsHelper(
+    		final String[] linkReferences) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(TABLE_BANKACCOUNT);
         query.whereContainedIn(COLUMN_ID, Arrays.asList(linkReferences));
         List<ParseObject> results = null;
@@ -237,14 +240,16 @@ public class ServerUtility {
                     e1.printStackTrace();
                 }
             }
-            BankAccount account = new BankAccount(objectId, accountNumber, balance,
+            BankAccount account = new BankAccount(objectId,
+            		accountNumber, balance,
                     bankName, transactions);
             list.add(account);
         }
         return list;
     }
-    
-    public boolean withdrawAmount(BankAccount account, double amount, String reason) {
+
+    public boolean withdrawAmount(final BankAccount account,
+    		final double amount, final String reason) {
         boolean deposited = false;
         if (amount <= account.getBalance()) {
             String transactionID = createWithdrawTransaction(amount, reason);
@@ -253,16 +258,18 @@ public class ServerUtility {
         }
         return deposited;
     }
-    
-    public boolean depositAmount(BankAccount account, double amount, String reason) {
+
+    public boolean depositAmount(final BankAccount account,
+    		final double amount, final String reason) {
         boolean deposited = false;
         String transactionID = createDepositTransaction(amount, reason);
         updateBankAccountWithDeposit(account, transactionID, amount);
         deposited = true;
         return deposited;
     }
-    
-    private String createDepositTransaction(double amount, String reason) {
+
+    private String createDepositTransaction(final double amount,
+    		final String reason) {
         ParseObject deposit = new ParseObject(TABLE_TRANSACTIONS);
         String transactionId = null;
         deposit.put(COLUMN_AMOUNT, amount);
@@ -276,8 +283,9 @@ public class ServerUtility {
         }
         return transactionId;
     }
-    
-    private void updateBankAccountWithDeposit(BankAccount account, String transactionID, double amount) {
+
+    private void updateBankAccountWithDeposit(final BankAccount account,
+    		final String transactionID, final double amount) {
         double newBalance = account.getBalance() + amount;
         String accountID = account.getObjectId();
         JSONArray array = null;
@@ -303,9 +311,10 @@ public class ServerUtility {
         }
 
     }
-    
-    public ArrayList<Transaction> getTransactions(BankAccount account) {
-        ParseObject result = queryFirst(TABLE_BANKACCOUNT, COLUMN_ID, account.getObjectId());
+
+    public ArrayList<Transaction> getTransactions(final BankAccount account) {
+        ParseObject result = queryFirst(TABLE_BANKACCOUNT, COLUMN_ID,
+        		account.getObjectId());
         JSONArray transactions = getJSONArray(result, COLUMN_TRANSACTIONS);
         ArrayList<Transaction> list = new ArrayList<Transaction>();
         if (transactions != null) {
@@ -319,8 +328,8 @@ public class ServerUtility {
         }
         return list;
     }
-    
-    private static Transaction retrieveTransaction(String objectID) {
+
+    private static Transaction retrieveTransaction(final String objectID) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(TABLE_TRANSACTIONS);
         ParseObject result = null;
         Transaction t = null;
@@ -348,7 +357,8 @@ public class ServerUtility {
      * @param value
      * @return
      */
-    private ParseObject queryFirst(String table, String key, Object value) {
+    private ParseObject queryFirst(final String table,
+    		final String key, final Object value) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(table);
         ParseObject result = null;
         query.whereEqualTo(key, value);
@@ -367,7 +377,8 @@ public class ServerUtility {
      * @param column
      * @return
      */
-    private JSONArray getJSONArray(ParseObject object, String column) {
+    private JSONArray getJSONArray(final ParseObject object,
+    		final String column) {
         JSONArray array = object.getJSONArray(column);
         try {
             if (array.get(0).equals("")) {
@@ -378,8 +389,10 @@ public class ServerUtility {
         }
         return array;
     }
-    
-    private void updateBankAccountWithWithdraw(BankAccount account, String transactionID, double amount) {
+
+    private void updateBankAccountWithWithdraw(
+    		final BankAccount account, final String transactionID,
+    		final double amount) {
         double newBalance = account.getBalance() - amount;
         String accountID = account.getObjectId();
         JSONArray array = null;
@@ -405,8 +418,9 @@ public class ServerUtility {
         }
 
     }
-    
-    private String createWithdrawTransaction(double amount, String reason) {
+
+    private String createWithdrawTransaction(final double amount,
+    		final String reason) {
         ParseObject deposit = new ParseObject(TABLE_TRANSACTIONS);
         String transactionId = null;
         deposit.put(COLUMN_AMOUNT, amount);
@@ -420,8 +434,9 @@ public class ServerUtility {
         }
         return transactionId;
     }
-    
-    private void updateAccounts(ParseObject owner, String accountID) {
+
+    private void updateAccounts(final ParseObject owner,
+    		final String accountID) {
         JSONArray array = owner.getJSONArray(COLUMN_BANKACCOUNTS);
         if (array == null) {
             array = new JSONArray();
@@ -434,8 +449,8 @@ public class ServerUtility {
             e.printStackTrace();
         }
     }
-    
-    private String createAccount(BankAccount account) {
+
+    private String createAccount(final BankAccount account) {
         ParseObject bankAccount = new ParseObject(TABLE_BANKACCOUNT);
         String objectId = null;
         String bankName = account.getBankName();
@@ -456,17 +471,18 @@ public class ServerUtility {
         } catch (ParseException e1) {
             e1.printStackTrace();
         }
-        if (retrieved == null)
-            try {
+        if (retrieved == null) {
+			try {
                 bankAccount.save();
                 objectId = bankAccount.getObjectId();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+		}
         return objectId;
     }
-    
-    private ParseObject getOwner(String username) {
+
+    private ParseObject getOwner(final String username) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(TABLE_OWNER);
         query.whereEqualTo(COLUMN_USERNAME, username);
         ParseObject reference = null;
@@ -477,8 +493,8 @@ public class ServerUtility {
         }
         return reference;
     }
-    
-    private void addOwner(String username) {
+
+    private void addOwner(final String username) {
         ParseObject owner = new ParseObject(TABLE_OWNER);
         owner.put(COLUMN_USERNAME, username);
         try {
@@ -487,21 +503,20 @@ public class ServerUtility {
             e.printStackTrace();
         }
     }
-    
+
     public ArrayList<BankAccount> getReportData() {
 		String username = ParseUser.getCurrentUser().getUsername();
 		String[] references = getBankAccountReferences(username);
 		ArrayList<BankAccount> list = null;
 		if (references != null) {
-			list = (ArrayList<BankAccount>) getBankAccountsHelper(references);
+			list = (ArrayList<BankAccount>)
+					getBankAccountsHelper(references);
 			for (BankAccount i : list) {
-				ArrayList<Transaction> transactions = getTransactions(i);
+				ArrayList<Transaction> transactions =
+						getTransactions(i);
 				i.setListTrans(transactions);
 			}
 		}
-		//displayReportData(list);
 		return list;
 	}
-
-
 }

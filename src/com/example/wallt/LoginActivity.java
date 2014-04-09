@@ -25,7 +25,7 @@ public class LoginActivity extends Activity {
     private String password;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         server = ServerUtility.getInstance();
@@ -37,7 +37,7 @@ public class LoginActivity extends Activity {
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                username = mUsernameField.getText().toString();
                 password = mPasswordField.getText().toString();
                 if (username.equals("") || password.equals("")) {
@@ -54,7 +54,7 @@ public class LoginActivity extends Activity {
 
         mSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 Intent i = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(i);
             }
@@ -64,21 +64,26 @@ public class LoginActivity extends Activity {
     private class AsyncTaskLogInUser extends AsyncTask<String, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(String... params) {
+        protected Boolean doInBackground(final String... params) {
             String username = params[0];
             String password = params[1];
             return server.logInUser(username, password);
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
             if (result) {
-            	SharedPreferences settings = getSharedPreferences(getString(R.string.preferences_table), 
+                SharedPreferences settings = getSharedPreferences(
+            			getString(R.string.preferences_table),
         				MODE_PRIVATE);
         		Editor edit = settings.edit();
-        		edit.putString(getString(R.string.preferences_username), server.getCurrentUsername());
-        		edit.putString(getString(R.string.preferences_email), server.getCurrentEmail());
+        		edit.putString(getString(R.string.
+        				preferences_username),
+        				server.getCurrentUsername());
+        		edit.putString(getString(R.string.
+        				preferences_email),
+        				server.getCurrentEmail());
         		edit.apply();
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK

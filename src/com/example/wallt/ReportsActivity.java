@@ -2,6 +2,7 @@ package com.example.wallt;
 
 import java.util.Calendar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -29,8 +30,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+@SuppressLint("ValidFragment")
 public class ReportsActivity extends Fragment {
-	
+
     private ListView listView;
     private ListAdapter listAdapter;
     private View fragmentView;
@@ -39,7 +41,7 @@ public class ReportsActivity extends Fragment {
     private int dateRow;
     private int reportRow;
     private int rowCount;
-    
+
     private TextView fromMonthView;
     private TextView fromDayView;
     private TextView fromYearView;
@@ -47,31 +49,33 @@ public class ReportsActivity extends Fragment {
     private TextView toDayView;
     private TextView toYearView;
     private Spinner spinner;
-    
+
     private int fromYear;
     private int fromMonth;
     private int fromDay;
     private int toYear;
     private int toMonth;
     private int toDay;
-    
+
     private int reportSelected;
-    
+
     private Calendar calendar;
-    
+
     public static int income = 0;
     public static int spending = 1;
     public static int accounts = 2;
     public static int cashflow = 3;
     public static int transactions = 4;
-    
-    private String[] months = {"January", "February", "March", "April",
-    	"May", "June", "July", "August", "September", "October", "November", "December"};
-    
-	
+
+    private String[] months = {"January",
+    		"February", "March", "April",
+    		"May", "June", "July", "August",
+    		"September", "October", "November",
+    		"December"};
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         rowCount = 0;
@@ -80,8 +84,10 @@ public class ReportsActivity extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	fragmentView = inflater.inflate(R.layout.activity_reports, container, false);
+	public final View onCreateView(LayoutInflater inflater,
+			ViewGroup container, Bundle savedInstanceState) {
+    	fragmentView = inflater.inflate(R.layout.
+    			activity_reports, container, false);
     	parentActivity = getActivity();
     	calendar = Calendar.getInstance();
     	toYear = calendar.get(Calendar.YEAR);
@@ -92,11 +98,10 @@ public class ReportsActivity extends Fragment {
     	fromDay = calendar.get(Calendar.DATE);
     	listAdapter = new ListAdapter(parentActivity);
     	listView = (ListView) fragmentView.findViewById(R.id.listView);
-    	Button generateReport = (Button) fragmentView.findViewById(R.id.button1);
+    	Button generateReport = (Button) fragmentView.
+    			findViewById(R.id.button1);
     	listView.setAdapter(listAdapter);
-    	
-    	
-    	
+
         listView.setOnTouchListener(new GestureListener() {
             public void onSwipeRight() {
                 ((MainActivity) parentActivity).finishFragment();
@@ -104,8 +109,8 @@ public class ReportsActivity extends Fragment {
         });
         generateReport.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-            	
+            public void onClick(final View v) {
+
             	Bundle i = new Bundle();
             	i.putInt("FROMMONTH", fromMonth);
 			    i.putInt("FROMDAY", fromDay);
@@ -114,33 +119,35 @@ public class ReportsActivity extends Fragment {
 			    i.putInt("TODAY", toDay);
 			    i.putInt("TOYEAR", toYear);
 			    i.putInt("TYPE", reportSelected);
-			    GeneratedActivity frag = new GeneratedActivity();
-			    frag.setArguments(i);
-            	((MainActivity) parentActivity).addFragment(frag,
-            			getString(R.string.title_activity_generated));
+			    GeneratedActivity pie = new GeneratedActivity();
+			    pie.putBundle(i);
+			    Intent pieIntent = pie.getIntent(getActivity());
+			    startActivity(pieIntent);
             }
         });
-        
+
         return fragmentView;
     }
-    
-	
+
 	@Override
-	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+	public final void onCreateOptionsMenu(final Menu menu,
+			final MenuInflater inflater) {
 	    super.onCreateOptionsMenu(menu, inflater);
 	    parentActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
 	    parentActivity.setTitle(getString(R.string.Reports));
 	    inflater.inflate(R.menu.reports, menu);
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public final boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			if (getFragmentManager().getBackStackEntryCount() > 1) {
-				((MainActivity) parentActivity).finishFragment();
+			   ((MainActivity) parentActivity).finishFragment();
 	        }
 			return true;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -158,7 +165,7 @@ public class ReportsActivity extends Fragment {
         }
 
         @Override
-        public boolean isEnabled(int i) {
+        public boolean isEnabled(final int i) {
             return i == dateRow || i == reportRow;
         }
 
@@ -168,12 +175,12 @@ public class ReportsActivity extends Fragment {
         }
 
         @Override
-        public Object getItem(int i) {
+        public Object getItem(final int i) {
             return null;
         }
 
         @Override
-        public long getItemId(int i) {
+        public long getItemId(final int i) {
             return i;
         }
 
@@ -183,11 +190,14 @@ public class ReportsActivity extends Fragment {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
+        public View getView(final int i, View view,
+        		final ViewGroup viewGroup) {
             int type = getItemViewType(i);
             if (type == 0) {
-            	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            	view = li.inflate(R.layout.reports_date_layout, viewGroup, false);
+            	LayoutInflater li = (LayoutInflater) mContext.
+            		getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	view = li.inflate(R.layout.reports_date_layout,
+            			viewGroup, false);
                 fromMonthView = (TextView) view.findViewById(R.id.frommonth);
                 fromYearView = (TextView) view.findViewById(R.id.fromyear);
                 fromDayView = (TextView) view.findViewById(R.id.fromday);
@@ -202,41 +212,57 @@ public class ReportsActivity extends Fragment {
                     fromYearView.setText(Integer.toString(fromYear));
                     toYearView.setText(Integer.toString(toYear));
                 }
-                final LinearLayout fromHolder = (LinearLayout) view.findViewById(R.id.fromLayout);
-                final LinearLayout toHolder = (LinearLayout) view.findViewById(R.id.toLayout);
+                final LinearLayout fromHolder = (LinearLayout) view.
+                		findViewById(R.id.fromLayout);
+                final LinearLayout toHolder = (LinearLayout) view.
+                		findViewById(R.id.toLayout);
                 fromHolder.setOnClickListener(new OnClickListener() {
 					@Override
-					public void onClick(View v) {
-						DialogFragment newFragment = new FromDatePickerFragment();
-	        		    newFragment.show(getFragmentManager(), "datepicker");
+					public void onClick(final View v) {
+						DialogFragment newFragment =
+						new FromDatePickerFragment();
+	        		    newFragment.show(getFragmentManager(),
+	        		    		"datepicker");
 					}
                 });
                 toHolder.setOnClickListener(new OnClickListener() {
 					@Override
-					public void onClick(View v) {
-						DialogFragment newFragment = new ToDatePickerFragment();
-	        		    newFragment.show(getFragmentManager(), "datepicker");
+					public void onClick(final View v) {
+						DialogFragment newFragment =
+						new ToDatePickerFragment();
+	        		    newFragment.show(getFragmentManager(),
+	        		    		"datepicker");
 					}
                 });
             } else if (type == 1) {
-            	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            	view = li.inflate(R.layout.reports_report_layout, viewGroup, false);
+            	LayoutInflater li = (LayoutInflater) mContext.
+            		getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	view = li.inflate(R.layout.reports_report_layout,
+            			viewGroup, false);
             	spinner = (Spinner) view.findViewById(R.id.spinner1);
-            	String[] items = {getString(R.string.income_report), getString(R.string.spending_report),
-            			getString(R.string.accountlisting_report), getString(R.string.cashflow_report)};
+            	String[] items = {getString(R.string.income_report),
+            			getString(R.string.spending_report),
+            			getString(R.string.accountlisting_report),
+            			getString(R.string.cashflow_report)};
                 if (i == reportRow) {
-                	ArrayAdapter<String> adapter = new ArrayAdapter<String>(parentActivity,
+                	ArrayAdapter<String> adapter =
+                			new ArrayAdapter<String>(parentActivity,
                 			R.layout.spinner_item, items);
-                    spinner.setAdapter(adapter); 
-                    spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    spinner.setAdapter(adapter);
+                    spinner.setOnItemSelectedListener(
+                    		new OnItemSelectedListener() {
             			@Override
-            			public void onItemSelected(AdapterView<?> parent, View view,
-            					int position, long id) {
+            			public void onItemSelected(
+            					final AdapterView<?> parent,
+            					final View view, 
+            					final int position,
+            					final long id) {
             				reportSelected = position;
             			}
 
             			@Override
-            			public void onNothingSelected(AdapterView<?> parent) {
+            			public void onNothingSelected(
+            					final AdapterView<?> parent) {
             				// TODO Auto-generated method stub
             			}
                 	});
@@ -246,7 +272,7 @@ public class ReportsActivity extends Fragment {
         }
 
         @Override
-        public int getItemViewType(int i) {
+        public int getItemViewType(final int i) {
             if (i == dateRow) {
                 return 0;
             } else if (i == reportRow) {
@@ -266,20 +292,23 @@ public class ReportsActivity extends Fragment {
             return false;
         }
     }
-    
+
+	@SuppressLint("ValidFragment")
 	private class FromDatePickerFragment extends DialogFragment
 		implements DatePickerDialog.OnDateSetListener {
 
 		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
+		public Dialog onCreateDialog(final Bundle savedInstanceState) {
 			int year = fromYear;
 			int month = fromMonth;
 			int day = fromDay;
-			return new DatePickerDialog(getActivity(), this, year, month, day);
+			return new DatePickerDialog(getActivity(),
+					this, year, month, day);
 		}
-		
+
 		@Override
-		public void onDateSet(DatePicker view, int year, int month, int day) {
+		public void onDateSet(final DatePicker view, final int year,
+					final int month, final int day) {
 			fromYear = year;
 			fromMonth = month;
 			fromDay = day;
@@ -293,15 +322,17 @@ public class ReportsActivity extends Fragment {
 		implements DatePickerDialog.OnDateSetListener {
 
 		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
+		public Dialog onCreateDialog(final Bundle savedInstanceState) {
 			int year = toYear;
 			int month = toMonth;
 			int day = toDay;
-			return new DatePickerDialog(getActivity(), this, year, month, day);
+			return new DatePickerDialog(getActivity(),
+					this, year, month, day);
 		}
 
 		@Override
-		public void onDateSet(DatePicker view, int year, int month, int day) {
+		public void onDateSet(final DatePicker view,
+			   final int year, final int month, final int day) {
 			toYear = year;
 			toMonth = month;
 			toDay = day;

@@ -9,7 +9,7 @@ public class SplashActivity extends Activity {
     private ServerUtility server;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         server = ServerUtility.getInstance();

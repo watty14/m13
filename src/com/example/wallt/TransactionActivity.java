@@ -41,27 +41,30 @@ public class TransactionActivity extends Fragment {
    private ProgressBar mProgressBar;
    private String objectID;
    private BankAccount account;
-   
+
    private ListView listView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	fragmentView = inflater.inflate(R.layout.activity_transaction, container, false);
+	public final View onCreateView(final LayoutInflater inflater,
+			final ViewGroup container,
+			final Bundle savedInstanceState) {
+    	fragmentView = inflater.inflate(R.layout.
+    			activity_transaction, container, false);
     	instance = ServerUtility.getInstance();
     	fragmentView.setOnTouchListener(new GestureListener() {
             public void onSwipeRight() {
                 ((MainActivity) parentActivity).finishFragment();
             }
         });
-    	
+
     	listView = (ListView) fragmentView.findViewById(R.id.listView);
-    	
+
     	parentActivity = getActivity();
     	Bundle data = getArguments();
         bankname = data.getString("BANKNAME");
@@ -70,17 +73,21 @@ public class TransactionActivity extends Fragment {
         objectID = data.getString("objectID");;
         mDeposit = (Button) fragmentView.findViewById(R.id.deposit_button);
         mWithdraw = (Button) fragmentView.findViewById(R.id.withdraw_button);
-        mTransactionHistory = (Button) fragmentView.findViewById(R.id.transactionhistory_button);
-        mTransactionGraphHistory = (Button) fragmentView.findViewById(R.id.lineGraph);
+        mTransactionHistory = (Button) fragmentView.findViewById(
+        		R.id.transactionhistory_button);
+        mTransactionGraphHistory = (Button) fragmentView.findViewById(
+        		R.id.lineGraph);
         mAmount = (EditText) fragmentView.findViewById(R.id.amount_field);
         mReason = (EditText) fragmentView.findViewById(R.id.reason_field);
-        mProgressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar1);
-        account = new BankAccount(objectID, acctNumber, Double.parseDouble(balance), bankname, null);
+        mProgressBar = (ProgressBar) fragmentView.findViewById(
+        		R.id.progressBar1);
+        account = new BankAccount(objectID, acctNumber,
+        		Double.parseDouble(balance), bankname, null);
         ListAdapter arrayAdapter = new ListAdapter(parentActivity);
         listView.setAdapter(arrayAdapter);
-        mDeposit.setOnClickListener (new View.OnClickListener() {
+        mDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mProgressBar.setVisibility(View.VISIBLE);
                 mDeposit.setVisibility(View.INVISIBLE);
                 mWithdraw.setVisibility(View.INVISIBLE);
@@ -88,9 +95,9 @@ public class TransactionActivity extends Fragment {
             }
         });
 
-        mWithdraw.setOnClickListener (new View.OnClickListener() {
+        mWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mProgressBar.setVisibility(View.VISIBLE);
                 mDeposit.setVisibility(View.INVISIBLE);
                 mWithdraw.setVisibility(View.INVISIBLE);
@@ -98,26 +105,28 @@ public class TransactionActivity extends Fragment {
             }
         });
 
-        mTransactionHistory.setOnClickListener (new View.OnClickListener() {
+        mTransactionHistory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
             	Bundle i = new Bundle();
             	i.putString("ID", objectID);
             	i.putString("BANKNAME", bankname);
-			    TransactionHistoryActivity frag = new TransactionHistoryActivity();
+			    TransactionHistoryActivity frag =
+			    		new TransactionHistoryActivity();
 			    frag.setArguments(i);
             	((MainActivity) parentActivity).addFragment(frag,
-            			getString(R.string.title_activity_transactionhistory));
+            	getString(R.string.title_activity_transactionhistory));
             }
         });
-        
-        mTransactionGraphHistory.setOnClickListener (new View.OnClickListener() {
+
+        mTransactionGraphHistory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
             	Bundle i = new Bundle();
             	i.putString("ID", objectID);
             	i.putString("BANKNAME", bankname);
-			    TransactionGraphHistoryActivity line = new TransactionGraphHistoryActivity();
+			    TransactionGraphHistoryActivity line =
+			    		new TransactionGraphHistoryActivity();
 			    line.putBundle(i);
 		    	Intent lineIntent = line.getIntent(getActivity());
 		    	startActivity(lineIntent);
@@ -125,32 +134,36 @@ public class TransactionActivity extends Fragment {
         });
         return fragmentView;
     }
-    
-	
+
 	@Override
-	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+	public final void onCreateOptionsMenu(final Menu menu,
+			final MenuInflater inflater) {
 	    super.onCreateOptionsMenu(menu, inflater);
 	    parentActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
-	    parentActivity.setTitle(getString(R.string.title_activity_transactions));
+	    parentActivity.setTitle(getString(R.string.
+	    		title_activity_transactions));
 	    inflater.inflate(R.menu.generated, menu);
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public final boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			if (getFragmentManager().getBackStackEntryCount() > 1) {
-				((MainActivity) parentActivity).finishFragment();
+			   ((MainActivity) parentActivity).finishFragment();
 	        }
 			return true;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private class AsyncTaskDeposit extends AsyncTask<Void, Void, Boolean> {
+
+	private class AsyncTaskDeposit extends AsyncTask<Void,
+			Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected Boolean doInBackground(final Void... params) {
             String amountStr = mAmount.getText().toString();
             String reasonStr = mReason.getText().toString();
             if (amountStr.equals("")) {
@@ -161,7 +174,7 @@ public class TransactionActivity extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
             mProgressBar.setVisibility(View.INVISIBLE);
             if (result) {
@@ -169,7 +182,8 @@ public class TransactionActivity extends Fragment {
                         Toast.LENGTH_LONG).show();
                 //((MainActivity) parentActivity).finishFragment();
             } else {
-                Toast.makeText(parentActivity, "Failed to desposit money! Try again.",
+                Toast.makeText(parentActivity,
+                		"Failed to desposit money! Try again.",
                         Toast.LENGTH_LONG).show();
             }
             mDeposit.setVisibility(View.VISIBLE);
@@ -187,7 +201,7 @@ public class TransactionActivity extends Fragment {
     private class AsyncTaskWithdraw extends AsyncTask<Void, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected Boolean doInBackground(final Void... params) {
             String amountStr = mAmount.getText().toString();
             String reasonStr = mReason.getText().toString();
             if (amountStr.equals("")) {
@@ -198,7 +212,7 @@ public class TransactionActivity extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
             mProgressBar.setVisibility(View.INVISIBLE);
             if (result) {
@@ -206,8 +220,9 @@ public class TransactionActivity extends Fragment {
                         Toast.LENGTH_LONG).show();
                 //((MainActivity) parentActivity).finishFragment();
             } else {
-                
-                Toast.makeText(parentActivity, "Failed to withdraw money! Try again.",
+
+                Toast.makeText(parentActivity,
+                		"Failed to withdraw money! Try again.",
                         Toast.LENGTH_LONG).show();
             }
             mDeposit.setVisibility(View.VISIBLE);
@@ -215,54 +230,56 @@ public class TransactionActivity extends Fragment {
         }
 
     }
-    
+
     private class ListAdapter extends BaseAdapter {
 	    private Context mContext;
-	
-	    public ListAdapter(Context context) {
+
+	    public ListAdapter(final Context context) {
 	        mContext = context;
 	    }
-	
+
 	    @Override
 	    public boolean areAllItemsEnabled() {
 	        return false;
 	    }
-	
+
 	    @Override
-	    public boolean isEnabled(int i) {
+	    public boolean isEnabled(final int i) {
 	        return false;
 	    }
-	
+
 	    @Override
 	    public int getCount() {
 	        return 3;
 	    }
-	
+
 	    @Override
-	    public Object getItem(int i) {
+	    public Object getItem(final int i) {
 	        return null;
 	    }
-	
+
 	    @Override
-	    public long getItemId(int i) {
+	    public long getItemId(final int i) {
 	        return i;
 	    }
-	
+
 	    @Override
 	    public boolean hasStableIds() {
 	        return false;
 	    }
-	
+
 	    @Override
-	    public View getView(int i, View view, ViewGroup viewGroup) {	
-	    	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	    public View getView(final int i, View view,
+	    		final ViewGroup viewGroup) {
+	    	LayoutInflater li = (LayoutInflater) mContext.
+	    		getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    	view = li.inflate(R.layout.report_twoitem, viewGroup, false);
 	    	TextView left = (TextView) view.findViewById(R.id.left);
     		TextView right = (TextView) view.findViewById(R.id.right);
 	    	if (i == 0) {
 	    		left.setText("Bank Name");
 	    		right.setText(bankname);
-	    	} else if (i == 1){
+	    	} else if (i == 1) {
 	    		left.setText("Account Number");
 	    		right.setText(acctNumber);
 	    	} else if (i == 2) {
@@ -271,17 +288,17 @@ public class TransactionActivity extends Fragment {
 	    	}
 	        return view;
 	    }
-	
+
 	    @Override
-	    public int getItemViewType(int i) {
+	    public int getItemViewType(final int i) {
 	        return 0;
 	    }
-	
+
 	    @Override
 	    public int getViewTypeCount() {
 	        return 1;
 	    }
-	
+
 	    @Override
 	    public boolean isEmpty() {
 	        return false;

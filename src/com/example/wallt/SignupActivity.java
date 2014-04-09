@@ -23,7 +23,7 @@ public class SignupActivity extends Activity {
     private ServerUtility server;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+	protected final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         server = ServerUtility.getInstance();
@@ -36,7 +36,7 @@ public class SignupActivity extends Activity {
 
         mSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 String username = mUsernameField.getText().toString();
                 String password = mPasswordField.getText().toString();
                 String verify = mVerifyField.getText().toString();
@@ -64,7 +64,7 @@ public class SignupActivity extends Activity {
     private class AsyncTaskSignupUser extends AsyncTask<String, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(String... params) {
+        protected Boolean doInBackground(final String... params) {
             String username = params[0];
             String email = params[2];
             String password = params[1];
@@ -72,14 +72,17 @@ public class SignupActivity extends Activity {
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
             if (result) {
-            	SharedPreferences settings = getSharedPreferences(getString(R.string.preferences_table), 
+            	SharedPreferences settings = getSharedPreferences(
+            			getString(R.string.preferences_table), 
         				MODE_PRIVATE);
         		Editor edit = settings.edit();
-        		edit.putString(getString(R.string.preferences_username), server.getCurrentUsername());
-        		edit.putString(getString(R.string.preferences_email), server.getCurrentEmail());
+        		edit.putString(getString(R.string.preferences_username),
+        				server.getCurrentUsername());
+        		edit.putString(getString(R.string.preferences_email),
+        				server.getCurrentEmail());
         		edit.apply();
                 Intent i = new Intent(SignupActivity.this,
                         MainActivity.class);

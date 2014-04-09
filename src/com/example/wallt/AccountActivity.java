@@ -21,79 +21,97 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-	public class AccountActivity extends Fragment {
+    /**
+     * Class that defines the behavior of the account fragment.
+     *
+     * @author Thomas Harris (tharris7@gatech.edu)
+     * @version 1.0
+     */
+    public class AccountActivity extends Fragment {
 
-	private View fragment;
-	private ListView listView;
-	private ArrayList<BankAccount> list;
-	private Activity parentActivity;
-	private ServerUtility instance;
-	private List<BankAccount> accounts;
-	private ProgressBar mProgressBar;
+    private View fragment;
+    private ListView listView;
+    private ArrayList<BankAccount> list;
+    private Activity parentActivity;
+    private ServerUtility instance;
+    private List<BankAccount> accounts;
+
+    /**
+     * Instance of progress tracker.
+     */
+    private ProgressBar mProgressBar;
 
     @Override
-	public final void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
 
-	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		fragment = inflater.inflate(R.layout.activity_account, container, false);
-		instance = ServerUtility.getInstance();
-		parentActivity = getActivity();
-		listView = (ListView) fragment.findViewById(R.id.listView);
-		mProgressBar = (ProgressBar) fragment.findViewById(R.id.progressBar1);
+    @Override
+	public final View onCreateView(final LayoutInflater inflater, final
+    		ViewGroup container, final Bundle savedInstanceState) {
+	    fragment = inflater.inflate(R.layout.activity_account, container,
+	    			false);
+	    instance = ServerUtility.getInstance();
+	    parentActivity = getActivity();
+	    listView = (ListView) fragment.findViewById(R.id.listView);
+	    mProgressBar = (ProgressBar) fragment.findViewById(R.id.
+	    		progressBar1);
 		new AsyncTaskGetAccounts().execute();
 	    listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            public void onItemClick(final AdapterView<?> arg0,
+            		final View arg1, final int arg2, final long arg3) {
             	Bundle i = new Bundle();
             	i.putString("BANKNAME", accounts.get(arg2).getBankName());
-            	i.putString("ACCOUNTNUMBER", accounts.get(arg2).getAccountNumber());
-            	i.putString("BALANCE", Double.valueOf(accounts.get(arg2).getBalance()).toString());
+            	i.putString("ACCOUNTNUMBER", accounts.get(arg2).
+            				getAccountNumber());
+            	i.putString("BALANCE", Double.valueOf(accounts.get(arg2).
+            				getBalance()).toString());
             	i.putString("objectID", accounts.get(arg2).getObjectId());
-			    TransactionActivity frag = new TransactionActivity();
+            	TransactionActivity frag = new TransactionActivity();
 			    frag.setArguments(i);
             	((MainActivity) parentActivity).addFragment(frag,
-            			getString(R.string.title_activity_transactions));
+            		getString(R.string.title_activity_transactions));
             }
         });
-	    
-	    
-	    
+
 		return fragment;
 	}
-	
+
 	@Override
-	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+	public final void onCreateOptionsMenu(final Menu menu,
+				final MenuInflater inflater) {
 	    super.onCreateOptionsMenu(menu, inflater);
 	    getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
 	    getActivity().setTitle(getString(R.string.title_activity_account));
 	    inflater.inflate(R.menu.account, menu);
 	}
-	
+
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+	public final boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
         case R.id.account_menu_refresh: {
         	new AsyncTaskGetAccounts().execute();
             break;
         }
         case R.id.account_menu_add: {
-        	((MainActivity) parentActivity).addFragment(new NewAccountActivity(),
-                	getString(R.string.NewAccount));
+        	((MainActivity) parentActivity).
+        		addFragment(new NewAccountActivity(),
+                getString(R.string.NewAccount));
             break;
         }
-        
+
         case R.id.account_menu_reports: {
-        	((MainActivity) parentActivity).addFragment(new ReportsActivity(),
+        	((MainActivity) parentActivity).
+        			addFragment(new ReportsActivity(),
                 	getString(R.string.Reports));
             break;
         }
-        
+
         case R.id.account_menu_settings: {
-        	((MainActivity) parentActivity).addFragment(new SettingsActivity(),
+        	((MainActivity) parentActivity).
+        			addFragment(new SettingsActivity(),
         			getString(R.string.Settings));
             break;
         }
@@ -109,11 +127,11 @@ import android.widget.TextView;
 		ArrayList<BankAccount> list = new ArrayList<BankAccount>();
 		return list;
 	}
-	
+
 	public BankAccount getObject(int position) {
 		 return list.get(position);
 	 }
-	
+
 	private class ListAdapter extends BaseAdapter {
         private Context mContext;
 
@@ -127,7 +145,7 @@ import android.widget.TextView;
         }
 
         @Override
-        public boolean isEnabled(int i) {
+        public boolean isEnabled(final int i) {
             return true;
         }
 
@@ -137,12 +155,12 @@ import android.widget.TextView;
         }
 
         @Override
-        public Object getItem(int i) {
+        public Object getItem(final int i) {
             return accounts.get(i);
         }
 
         @Override
-        public long getItemId(int i) {
+        public long getItemId(final int i) {
             return i;
         }
 
@@ -152,20 +170,25 @@ import android.widget.TextView;
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-        	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        	view = li.inflate(R.layout.account_row_layout, viewGroup, false);
+        public View getView(final int i, View view,
+        				final ViewGroup viewGroup) {
+        	LayoutInflater li = (LayoutInflater) mContext.
+        		getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        	view = li.inflate(R.layout.account_row_layout,
+        			viewGroup, false);
             TextView bankName = (TextView) view.findViewById(R.id.bankName);
-            TextView accountNumber = (TextView) view.findViewById(R.id.accountNumber);
+            TextView accountNumber = (TextView) view.
+            			findViewById(R.id.accountNumber);
             TextView balance = (TextView) view.findViewById(R.id.balance);
             bankName.setText(accounts.get(i).getBankName());
             accountNumber.setText(accounts.get(i).getAccountNumber());
-            balance.setText(Double.valueOf(accounts.get(i).getBalance()).toString());
+            balance.setText(Double.valueOf(accounts.get(i).
+            					getBalance()).toString());
             return view;
         }
 
         @Override
-        public int getItemViewType(int i) {
+        public int getItemViewType(final int i) {
         	return 0;
         }
 
@@ -179,23 +202,25 @@ import android.widget.TextView;
             return false;
         }
     }
-	
+
 	private class AsyncTaskGetAccounts extends
     	AsyncTask<Void, Void, ArrayList<BankAccount>> {
 
 	    @Override
-	    protected ArrayList<BankAccount> doInBackground(final Void... params) {
+	    protected ArrayList<BankAccount> doInBackground(
+	    			final Void... params) {
 	        publishProgress();
 	        return instance.getBankAccounts();
 	    }
-	
+
 	    @Override
 	    protected void onProgressUpdate(final Void... params) {
 	        mProgressBar.setVisibility(View.VISIBLE);
 	    }
-	
+
 	    @Override
-	    protected void onPostExecute(final ArrayList<BankAccount> list) {
+	    protected void onPostExecute(
+	    		final ArrayList<BankAccount> list) {
 	        super.onPostExecute(list);
 	        mProgressBar.setVisibility(View.INVISIBLE);
 	        if (list != null) {

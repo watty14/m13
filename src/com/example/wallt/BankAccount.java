@@ -3,16 +3,17 @@ package com.example.wallt;
 import java.util.ArrayList;
 
 public class BankAccount {
-	
+
 	private String objectId;
 	private String accountNumber;
 	private double balance;
 	private String bankName;
 	private String[] transactions;
 	private ArrayList<Transaction> listTrans;
-	
-	public BankAccount(String objectId, String accountNumber, double balance,
-			String bankName, String[] transactions) {
+
+	public BankAccount(String objectId,
+		final String accountNumber, final double balance,
+		final String bankName, final String[] transactions) {
 		this.accountNumber = accountNumber;
 		this.objectId = objectId;
 		this.balance = balance;
@@ -68,6 +69,4 @@ public class BankAccount {
 		this.listTrans = listTrans;
 	}
 
-	
-    
 }

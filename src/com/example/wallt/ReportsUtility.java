@@ -24,7 +24,7 @@ public class ReportsUtility {
      * withdraw : Instance Variable for a String.
      */
     private String withdraw = "withdraw";
-    
+
     private ServerUtility instance = ServerUtility.getInstance();
 
     /**
@@ -34,13 +34,15 @@ public class ReportsUtility {
      * @param to   : ending date of the report.
      * @return String of transactions and reasons.
      */
-    public ArrayList<String> generateSpendingReport(Calendar from, Calendar to) {
+    public final ArrayList<String> generateSpendingReport(
+            final Calendar from, final Calendar to) {
         ArrayList<BankAccount> list = filteredBankAccounts(from, to);
 
         HashMap<String, Double> map = new HashMap<String, Double>();
         if (list != null) {
             for (BankAccount b : list) {
-                ArrayList<Transaction> transactions = (ArrayList<Transaction>) b.getListTrans();
+                ArrayList<Transaction> transactions =
+                		(ArrayList<Transaction>) b.getListTrans();
                 for (Transaction t : transactions) {
                     String type = t.getType();
                     type = type.toLowerCase();
@@ -56,9 +58,10 @@ public class ReportsUtility {
                     }
                 }
             }
-        } 
-        ArrayList<String> aList = new ArrayList<String>();        
-        aList.add("Spending Category Report for " + ParseUser.getCurrentUser().getUsername());
+        }
+        ArrayList<String> aList = new ArrayList<String>();
+        aList.add("Spending Category Report for "
+        		+ ParseUser.getCurrentUser().getUsername());
         aList.add(from.getTime().toString());
         aList.add(to.getTime().toString());
         for (HashMap.Entry<String, Double> entry : map.entrySet()) {
@@ -77,13 +80,15 @@ public class ReportsUtility {
      * @param to   : ending date of the report.
      * @return String of transactions and reasons.
      */
-    public ArrayList<String> generateIncomeReport(Calendar from, Calendar to) {
+    public final ArrayList<String> generateIncomeReport(
+    		final Calendar from, final Calendar to) {
         ArrayList<BankAccount> list = filteredBankAccounts(from, to);
 
         HashMap<String, Double> map = new HashMap<String, Double>();
         if (list != null) {
             for (BankAccount b : list) {
-                ArrayList<Transaction> transactions = (ArrayList<Transaction>) b.getListTrans();
+                ArrayList<Transaction> transactions =
+                		(ArrayList<Transaction>) b.getListTrans();
                 for (Transaction t : transactions) {
                     String type = t.getType();
                     type = type.toLowerCase();
@@ -100,8 +105,9 @@ public class ReportsUtility {
                 }
             }
         }
-        ArrayList<String> aList = new ArrayList<String>();        
-        aList.add("Income Category Report for " + ParseUser.getCurrentUser().getUsername());
+        ArrayList<String> aList = new ArrayList<String>();
+        aList.add("Income Category Report for "
+        		+ ParseUser.getCurrentUser().getUsername());
         aList.add(from.getTime().toString());
         aList.add(to.getTime().toString());
         for (HashMap.Entry<String, Double> entry : map.entrySet()) {
@@ -120,13 +126,15 @@ public class ReportsUtility {
      * @param to   : ending date of the report.
      * @return String of transactions and reasons.
      */
-    public ArrayList<String> generateCashFlowReport(Calendar from, Calendar to) {
+    public final ArrayList<String> generateCashFlowReport(
+    		final Calendar from, final Calendar to) {
         ArrayList<BankAccount> list2 = filteredBankAccounts(from, to);
         double income = 0;
         double expenses = 0;
         if (list2 != null) {
             for (BankAccount b : list2) {
-                ArrayList<Transaction> transactions = (ArrayList<Transaction>) b.getListTrans();
+                ArrayList<Transaction> transactions =
+                		(ArrayList<Transaction>) b.getListTrans();
                 for (Transaction t : transactions) {
                     String type = t.getType();
                     type = type.toLowerCase();
@@ -138,8 +146,9 @@ public class ReportsUtility {
                 }
             }
         }
-        ArrayList<String> aList = new ArrayList<String>();        
-        aList.add("Cash Flow Report for " + ParseUser.getCurrentUser().getUsername());
+        ArrayList<String> aList = new ArrayList<String>();
+        aList.add("Cash Flow Report for "
+        		+ ParseUser.getCurrentUser().getUsername());
         aList.add(from.getTime().toString());
         aList.add(to.getTime().toString());
         aList.add("Income");
@@ -152,16 +161,19 @@ public class ReportsUtility {
     }
 
     /**
-     * generateAccountListingReport method creates a report based on AccountList.
+     * generateAccountListingReport method creates a report
+     * based on AccountList.
      *
      * @param from : starting date of the report.
      * @param to   : ending date of the report.
      * @return String of transactions and reasons.
      */
-    public ArrayList<String> generateAccountListingReport(Calendar from, Calendar to) {
+    public final ArrayList<String> generateAccountListingReport(
+    		final Calendar from, final Calendar to) {
         ArrayList<BankAccount> list = filteredBankAccounts(from, to);
-        ArrayList<String> aList = new ArrayList<String>();        
-        aList.add("Account Listings Report for " + ParseUser.getCurrentUser().getUsername());
+        ArrayList<String> aList = new ArrayList<String>();
+        aList.add("Account Listings Report for "
+        		+ ParseUser.getCurrentUser().getUsername());
         aList.add(from.getTime().toString());
         aList.add(to.getTime().toString());
         if (list != null) {
@@ -176,18 +188,20 @@ public class ReportsUtility {
     }
 
     /**
-     * generateTransactionHistory method creates a transaction history for an bank account.
+     * generateTransactionHistory method creates a transaction history
+     * for an bank account.
      *
      * @param account : Bank account object
      * @param from : starting date of the report.
      * @param to   : ending date of the report.
      * @return String of transactions and reasons.
      */
-    public ArrayList<String> generateTransactionHistory(BankAccount account,
-            Calendar from, Calendar to) {
+    public final ArrayList<String> generateTransactionHistory(
+    		final BankAccount account,
+            final Calendar from, final Calendar to) {
         ArrayList<Transaction> initialList =  instance.getTransactions(account);
         //initialList = filterByDate(initialList, from, to);
-        ArrayList<String> aList = new ArrayList<String>();        
+        ArrayList<String> aList = new ArrayList<String>();
         aList.add("Transaction History Report for " + account.getBankName());
         //aList.add(from.getTime().toString());
         //aList.add(to.getTime().toString());
@@ -215,13 +229,17 @@ public class ReportsUtility {
      *
      * @param from : starting date of the report.
      * @param to   : ending date of the report.
-     * @return ArrayList<BankAccount> : list of bankaccounts with valid informations
+     * @return ArrayList<BankAccount> : list of bankaccounts with
+     * 				valid informations
      */
-    private ArrayList<BankAccount> filteredBankAccounts(Calendar from, Calendar to) {
+    private ArrayList<BankAccount> filteredBankAccounts(
+    		final Calendar from, final Calendar to) {
         ArrayList<BankAccount> accounts = instance.getReportData();
         if (accounts != null) {
 	        for (BankAccount b : accounts) {
-	            ArrayList<Transaction> newList = filterByDate((ArrayList<Transaction>) b.getListTrans(), from, to);
+	            ArrayList<Transaction> newList =
+	            		filterByDate((ArrayList<Transaction>)
+	            		b.getListTrans(), from, to);
 	            b.setListTrans(newList);
 	        }
         }
@@ -237,7 +255,9 @@ public class ReportsUtility {
      * @param to   : ending date of the report.
      * @return ArrayList<Transactions> : List of transactions.
      */
-    private ArrayList<Transaction> filterByDate(ArrayList<Transaction> list, Calendar from, Calendar to) {
+    private ArrayList<Transaction> filterByDate(
+    	final ArrayList<Transaction> list, final Calendar from,
+    	final Calendar to) {
         ArrayList<Transaction> finalList = new ArrayList<Transaction>();
         for (Transaction t : list) {
             Calendar thisDate = t.getCalendar();

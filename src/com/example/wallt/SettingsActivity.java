@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 
 public class SettingsActivity extends Fragment {
-	
+
     private ListView listView;
     private ListAdapter listAdapter;
     private View fragmentView;
@@ -34,10 +34,10 @@ public class SettingsActivity extends Fragment {
     private int aboutSectionRow;
     private int versionRow;
     private int rowCount;
-    
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+	public final void onCreate(final
+			Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         rowCount = 0;
@@ -51,31 +51,38 @@ public class SettingsActivity extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	fragmentView = inflater.inflate(R.layout.activity_settings, container, false);
+	public final View onCreateView(final LayoutInflater inflater,
+			final ViewGroup container,
+			final Bundle savedInstanceState) {
+    	fragmentView = inflater.inflate(R.layout.
+    			activity_settings, container, false);
     	parentActivity = getActivity();
     	listAdapter = new ListAdapter(parentActivity);
     	listView = (ListView) fragmentView.findViewById(R.id.listView);
     	listView.setAdapter(listAdapter);
     	listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView,
+            		View view, int i, long l) {
                 if (i == logoutRow) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
+                    AlertDialog.Builder builder = new AlertDialog.
+                    		Builder(parentActivity);
                     builder.setMessage(getString(R.string.AreYouSure));
                     builder.setTitle(getString(R.string.app_name));
-                    builder.setPositiveButton(getString(R.string.OK), 
+                    builder.setPositiveButton(getString(R.string.OK),
                     		new DialogInterface.OnClickListener() {
 						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							((MainActivity) parentActivity).returnToLogin();
+						public void onClick(DialogInterface dialog,
+						int which) {
+						((MainActivity) parentActivity).
+						returnToLogin();
 						}
 					});
                     builder.setNegativeButton(getString(R.string.Cancel), null);
                     builder.show().setCanceledOnTouchOutside(true);
                 }
             }
-    	});            
+    	});
         listView.setOnTouchListener(new GestureListener() {
             public void onSwipeRight() {
                 ((MainActivity) parentActivity).finishFragment();
@@ -83,24 +90,26 @@ public class SettingsActivity extends Fragment {
         });
         return fragmentView;
     }
-    
-	
+
 	@Override
-	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+	public final void onCreateOptionsMenu(final Menu menu, 
+			final MenuInflater inflater) {
 	    super.onCreateOptionsMenu(menu, inflater);
 	    parentActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
 	    parentActivity.setTitle(getString(R.string.Settings));
 	    inflater.inflate(R.menu.settings, menu);
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public final boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			if (getFragmentManager().getBackStackEntryCount() > 1) {
-				((MainActivity) parentActivity).finishFragment();
+			   ((MainActivity) parentActivity).finishFragment();
 	        }
 			return true;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -118,12 +127,8 @@ public class SettingsActivity extends Fragment {
         }
 
         @Override
-        public boolean isEnabled(int i) {
+        public boolean isEnabled(final int i) {
             return i == logoutRow;
-        	/*return i == myAccountSectionRow || i == usernameRow || i == emailRow
-            		|| i == accountActionsSectionRow || i == logoutRow
-            		|| i == aboutSectionRow || i == versionRow;
-            		*/
         }
 
         @Override
@@ -132,12 +137,12 @@ public class SettingsActivity extends Fragment {
         }
 
         @Override
-        public Object getItem(int i) {
+        public Object getItem(final int i) {
             return null;
         }
 
         @Override
-        public long getItemId(int i) {
+        public long getItemId(final int i) {
             return i;
         }
 
@@ -147,12 +152,16 @@ public class SettingsActivity extends Fragment {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
+        public View getView(final int i, View view,
+        		final ViewGroup viewGroup) {
             int type = getItemViewType(i);
             if (type == 0) {
-            	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            	view = li.inflate(R.layout.settings_section_layout, viewGroup, false);
-                TextView textView = (TextView) view.findViewById(R.id.settings_section_text);
+            	LayoutInflater li = (LayoutInflater) mContext.
+            		getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	view = li.inflate(R.layout.settings_section_layout,
+            			viewGroup, false);
+                TextView textView = (TextView) view.findViewById(
+                		R.id.settings_section_text);
                 if (i == myAccountSectionRow) {
                     textView.setText(getString(R.string.myAccountSection));
                 } else if (i == accountActionsSectionRow) {
@@ -161,15 +170,22 @@ public class SettingsActivity extends Fragment {
                     textView.setText(getString(R.string.aboutSection));
                 }
             } else if (type == 1) {
-            	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            	view = li.inflate(R.layout.settings_row_two_layout, viewGroup, false);
-                TextView title = (TextView) view.findViewById(R.id.settings_row_title);
-                TextView subtitle = (TextView) view.findViewById(R.id.settings_row_subtitle);
+            	LayoutInflater li = (LayoutInflater) mContext.
+            			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	view = li.inflate(R.layout.settings_row_two_layout,
+            			viewGroup, false);
+                TextView title = (TextView) view.findViewById(R.id.
+                		settings_row_title);
+                TextView subtitle = (TextView) view.findViewById(R.id.
+                		settings_row_subtitle);
                 View divider = view.findViewById(R.id.settings_row_divider);
-                SharedPreferences settings =  parentActivity.getSharedPreferences(getString(
+                SharedPreferences settings =  parentActivity.
+                		getSharedPreferences(getString(
                 		R.string.preferences_table), 0);
-        		String userStr = settings.getString(getString(R.string.preferences_username), null);
-        		String emailStr = settings.getString(getString(R.string.preferences_email), null);
+        		String userStr = settings.getString(getString(R.string.
+        				preferences_username), null);
+        		String emailStr = settings.getString(getString(R.string.
+        				preferences_email), null);
                 if (i == usernameRow) {
                     title.setText(getString(R.string.username));
                     subtitle.setText(userStr);
@@ -184,9 +200,12 @@ public class SettingsActivity extends Fragment {
                     divider.setVisibility(View.INVISIBLE);
                 }
             } else if (type == 2) {
-            	LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            	view = li.inflate(R.layout.settings_row_button_layout, viewGroup, false);
-                TextView text = (TextView) view.findViewById(R.id.settings_row_text);
+            	LayoutInflater li = (LayoutInflater) mContext.
+            			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	view = li.inflate(R.layout.settings_row_button_layout,
+            			viewGroup, false);
+                TextView text = (TextView) view.findViewById(R.id.
+                		settings_row_text);
                 View divider = view.findViewById(R.id.settings_row_divider);
                 if (i == logoutRow) {
                     text.setText(getString(R.string.logout_button_label));
@@ -197,8 +216,9 @@ public class SettingsActivity extends Fragment {
         }
 
         @Override
-        public int getItemViewType(int i) {
-            if (i == myAccountSectionRow || i == accountActionsSectionRow || i == aboutSectionRow) {
+        public int getItemViewType(final int i) {
+            if (i == myAccountSectionRow || i == accountActionsSectionRow
+            		|| i == aboutSectionRow) {
                 return 0;
             } else if (i == usernameRow || i == emailRow || i == versionRow) {
                 return 1;
