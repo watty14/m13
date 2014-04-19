@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Lint Report</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto" />
+<link rel="stylesheet" type="text/css" href="lint-results_files/hololike.css" />
+<script language="javascript" type="text/javascript"> 
+<!--
+function reveal(id) {
+if (document.getElementById) {
+document.getElementById(id).style.display = 'block';
+document.getElementById(id+'Link').style.display = 'none';
+}
+}
+//--> 
+</script>
+</head>
+<body>
+<h1>Lint Report</h1>
+<div class="titleSeparator"></div>
+Check performed at Sat Apr 19 17:38:42 EDT 2014.<br/>
+1 errors and 30 warnings found:<br/><br/>
+<table class="overview">
+<tr><td></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
+</td></tr>
+<tr>
+<td class="countColumn">5</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#DefaultLocale">DefaultLocale: Implied default locale in case conversion</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-error.png" alt="Error" />
+<a href="#NewApi">NewApi: Calling new methods on older versions</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#OldTargetApi">OldTargetApi: Target SDK attribute is not targeting latest version</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Performance">Performance</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#MergeRootFrame">MergeRootFrame: FrameLayout can be replaced with <code>&lt;merge></code> tag</a>
+</td></tr>
+<tr>
+<td class="countColumn">17</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#UnusedResources">UnusedResources: Unused resources</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Usability:Icons">Usability:Icons</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#IconLauncherShape">IconLauncherShape: The launcher icon shape should use a distinct silhouette</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#IconDipSize">IconDipSize: Icon density-independent size validation</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#IconDuplicatesConfig">IconDuplicatesConfig: Identical bitmaps across various configurations</a>
+</td></tr>
+<tr>
+<td class="countColumn">2</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#IconDensities">IconDensities: Icon densities validation</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Usability">Usability</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#AlwaysShowAction">AlwaysShowAction: Usage of <code>showAsAction=always</code></a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (13)</a>
+</td></tr></table>
+<br/>
+<a name="Correctness"></a>
+<div class="category"><a href="#" title="Return to top">Correctness</a><div class="categorySeparator"></div>
+</div>
+<a name="DefaultLocale"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">DefaultLocale: Implied default locale in case conversion</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../src/com/example/wallt/presenters/ReportsUtility.java">../src/com/example/wallt/presenters/ReportsUtility.java</a>:50</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead</span><br /><pre class="errorlines">
+<span class="lineno">  47</span>                 		(ArrayList&lt;Transaction>) b.getListTrans();
+<span class="lineno">  48</span>                 for (Transaction t : transactions) {
+<span class="lineno">  49</span>                     String type = t.getType();
+<span class="lineno">  50</span>                     type = type.<span class="errorspan">toLowerCase();</span>
+<span class="lineno">  51</span>                     if (type.equals(withdraw)) {
+<span class="lineno">  52</span>                         String reason1 = t.getReason();
+</pre>
+<span class="location"><a href="../src/com/example/wallt/presenters/ReportsUtility.java">../src/com/example/wallt/presenters/ReportsUtility.java</a>:53</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead</span><br /><pre class="errorlines">
+<span class="lineno">  50</span>                     type = type.toLowerCase();
+<span class="lineno">  51</span>                     if (type.equals(withdraw)) {
+<span class="lineno">  52</span>                         String reason1 = t.getReason();
+<span class="lineno">  53</span>                         reason1 = reason1.<span class="errorspan">toLowerCase();</span>
+<span class="lineno">  54</span>                         double amount = t.getAmount();
+<span class="lineno">  55</span>                         if (map.containsKey(reason1)) {
+</pre>
+<span class="location"><a href="../src/com/example/wallt/presenters/ReportsUtility.java">../src/com/example/wallt/presenters/ReportsUtility.java</a>:96</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead</span><br /><pre class="errorlines">
+<span class="lineno">  93</span>                 		(ArrayList&lt;Transaction>) b.getListTrans();
+<span class="lineno">  94</span>                 for (Transaction t : transactions) {
+<span class="lineno">  95</span>                     String type = t.getType();
+<span class="lineno">  96</span>                     type = type.<span class="errorspan">toLowerCase();</span>
+<span class="lineno">  97</span>                     if (type.equals(deposit)) {
+<span class="lineno">  98</span>                         String reason = t.getReason();
+</pre>
+<span class="location"><a href="../src/com/example/wallt/presenters/ReportsUtility.java">../src/com/example/wallt/presenters/ReportsUtility.java</a>:99</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead</span><br /><pre class="errorlines">
+<span class="lineno">  96</span>                     type = type.toLowerCase();
+<span class="lineno">  97</span>                     if (type.equals(deposit)) {
+<span class="lineno">  98</span>                         String reason = t.getReason();
+<span class="lineno">  99</span>                         reason = reason.<span class="errorspan">toLowerCase();</span>
+<span class="lineno"> 100</span>                         double amount = t.getAmount();
+<span class="lineno"> 101</span>                         if (map.containsKey(reason)) {
+</pre>
+<span class="location"><a href="../src/com/example/wallt/presenters/ReportsUtility.java">../src/com/example/wallt/presenters/ReportsUtility.java</a>:142</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead</span><br /><pre class="errorlines">
+<span class="lineno"> 139</span>                 		(ArrayList&lt;Transaction>) b.getListTrans();
+<span class="lineno"> 140</span>                 for (Transaction t : transactions) {
+<span class="lineno"> 141</span>                     String type = t.getType();
+<span class="lineno"> 142</span>                     type = type.<span class="errorspan">toLowerCase();</span>
+<span class="lineno"> 143</span>                     if (type.equals(deposit)) {
+<span class="lineno"> 144</span>                         income = income + t.getAmount();
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Finds calls to locale-ambiguous <code>String</code> manipulation methods.</div>
+<div class="explanation">
+Calling <code>String#toLowerCase()</code> or <code>#toUpperCase()</code> <b>without specifying an explicit locale</b> is a common source of bugs. The reason for that is that those methods will use the current locale on the user's device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for <code>i</code> is <b>not</b> <code>I</code>.<br/>
+<br/>
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call <code>String#toUpperCase(Locale.US)</code> instead. If you really want to use the current locale, call <code>String#toUpperCase(Locale.getDefault())</code> instead.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/java/util/Locale.html#default_locale">http://developer.android.com/reference/java/util/Locale.html#default_locale</a>
+</div><br/>To suppress this error, use the issue id "DefaultLocale" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NewApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">NewApi: Calling new methods on older versions</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../src/com/example/wallt/views/MainActivity.java">../src/com/example/wallt/views/MainActivity.java</a>:63</span>: <span class="message">Call requires API level 13 (current min is 11): android.app.FragmentTransaction#setCustomAnimations</span><br /><pre class="errorlines">
+<span class="lineno">  60</span> 	    FragmentManager fragmentManager = getFragmentManager();
+<span class="lineno">  61</span> 	    FragmentTransaction fragmentTransaction = fragmentManager.
+<span class="lineno">  62</span> 	    		beginTransaction();
+<span class="lineno">  63</span> 	    fragmentTransaction.<span class="errorspan">setCustomAnimations(R.anim.no_anim_show,</span>
+<span class="lineno">  64</span> 	    		R.anim.no_anim,
+<span class="lineno">  65</span> 	    		R.anim.no_anim_show, R.anim.slide_right_away);
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Finds API accesses to APIs that are not supported in all targeted API versions.</div>
+<div class="explanation">
+This check scans through all the Android API calls in the application and warns about any calls that are not available on <b>all</b> versions targeted by this application (according to its minimum SDK attribute in the manifest).<br/>
+<br/>
+If you really want to use this API and don't need to support older devices just set the <code>minSdkVersion</code> in your <code>AndroidManifest.xml</code> file.<br/>
+If your code is <b>deliberately</b> accessing newer APIs, and you have ensured (e.g. with conditional execution) that this code will only ever be called on a supported platform, then you can annotate your class or method with the <code>@TargetApi</code> annotation specifying the local minimum SDK to apply, such as <code>@TargetApi(11)</code>, such that this check considers 11 rather than your manifest file's minimum SDK as the required API level.<br/>
+<br/>
+If you are deliberately setting <code>android:</code> attributes in style definitions, make sure you place this in a <code>values-v11</code> folder in order to avoid running into runtime conflicts on certain devices where manufacturers have added custom attributes whose ids conflict with the new ones on later platforms.<br/>
+<br/>
+Similarly, you can use tools:targetApi="11" in an XML file to indicate that the element will only be inflated in an adequate context.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NewApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="OldTargetApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">OldTargetApi: Target SDK attribute is not targeting latest version</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../AndroidManifest.xml">../AndroidManifest.xml</a>:7</span>: <span class="message">Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.</span><br /><pre class="errorlines">
+<span class="lineno">   4</span>     android:versionCode="1"
+<span class="lineno">   5</span>     android:versionName="1.0" >
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     <span class="errorspan">&lt;uses-sdk</span>
+<span class="lineno">   8</span>         android:minSdkVersion="11"
+<span class="lineno">   9</span>         android:targetSdkVersion="18" />
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Checks that the manifest specifies a targetSdkVersion that is recent.</div>
+<div class="explanation">
+When your application runs on a version of Android that is more recent than your <code>targetSdkVersion</code> specifies that it has been tested with, various compatibility modes kick in. This ensures that your application continues to work, but it may look out of place. For example, if the <code>targetSdkVersion</code> is less than 14, your app may get an option button in the UI.<br/>
+<br/>
+To fix this issue, set the <code>targetSdkVersion</code> to the highest available value. Then test your app to make sure everything works correctly. You may want to consult the compatibility notes to see what changes apply to each version you are adding support for: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div><br/>To suppress this error, use the issue id "OldTargetApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Performance"></a>
+<div class="category"><a href="#" title="Return to top">Performance</a><div class="categorySeparator"></div>
+</div>
+<a name="MergeRootFrame"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">MergeRootFrame: FrameLayout can be replaced with <code>&lt;merge></code> tag</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/layout/activity_main.xml">../res/layout/activity_main.xml</a>:2</span>: <span class="message">This &lt;FrameLayout> can be replaced with a &lt;merge> tag</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;?xml version="1.0" encoding="utf-8"?>
+<span class="lineno">   2</span> <span class="errorspan">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"</span>
+<span class="lineno">   3</span>     android:layout_width="match_parent"
+<span class="lineno">   4</span>     android:layout_height="match_parent"
+</pre>
+</div>
+<div class="metadata">Priority: 4 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Checks whether a root &lt;FrameLayout> can be replaced with a <code>&lt;merge></code> tag.</div>
+<div class="explanation">
+If a <code>&lt;FrameLayout></code> is the root of a layout and does not provide background or padding etc, it can often be replaced with a <code>&lt;merge></code> tag which is slightly more efficient. Note that this depends on context, so make sure you understand how the <code>&lt;merge></code> tag works before proceeding.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-by.html">http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-by.html</a>
+</div><br/>To suppress this error, use the issue id "MergeRootFrame" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="UnusedResources"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">UnusedResources: Unused resources</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/layout/activity_generated.xml">../res/layout/activity_generated.xml</a></span>: <span class="message">The resource R.layout.activity_generated appears to be unused</span><br />
+<span class="location"><a href="../res/layout/fragment_generated.xml">../res/layout/fragment_generated.xml</a></span>: <span class="message">The resource R.layout.fragment_generated appears to be unused</span><br />
+<span class="location"><a href="../res/menu/login.xml">../res/menu/login.xml</a></span>: <span class="message">The resource R.menu.login appears to be unused</span><br />
+<span class="location"><a href="../res/menu/main.xml">../res/menu/main.xml</a></span>: <span class="message">The resource R.menu.main appears to be unused</span><br />
+<span class="location"><a href="../res/menu/signup.xml">../res/menu/signup.xml</a></span>: <span class="message">The resource R.menu.signup appears to be unused</span><br />
+<button id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 12 More Occurrences...</button>
+<div id="UnusedResourcesDiv" style="display: none">
+<span class="location"><a href="../res/menu/splash.xml">../res/menu/splash.xml</a></span>: <span class="message">The resource R.menu.splash appears to be unused</span><br />
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:5</span>: <span class="message">The resource R.string.title_activity_settings appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   2</span> &lt;resources>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string name="app_name">WALLT&lt;/string>
+<span class="lineno">   5</span>     &lt;string <span class="errorspan">name="title_activity_settings">Settings&lt;/string></span>
+<span class="lineno">   6</span>     &lt;string name="title_activity_reports">Reports&lt;/string>
+<span class="lineno">   7</span>     &lt;string name="title_activity_new_account">Add Account&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:6</span>: <span class="message">The resource R.string.title_activity_reports appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string name="app_name">WALLT&lt;/string>
+<span class="lineno">   5</span>     &lt;string name="title_activity_settings">Settings&lt;/string>
+<span class="lineno">   6</span>     &lt;string <span class="errorspan">name="title_activity_reports">Reports&lt;/string></span>
+<span class="lineno">   7</span>     &lt;string name="title_activity_new_account">Add Account&lt;/string>
+<span class="lineno">   8</span>     &lt;string name="title_activity_account">Accounts&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:7</span>: <span class="message">The resource R.string.title_activity_new_account appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   4</span>     &lt;string name="app_name">WALLT&lt;/string>
+<span class="lineno">   5</span>     &lt;string name="title_activity_settings">Settings&lt;/string>
+<span class="lineno">   6</span>     &lt;string name="title_activity_reports">Reports&lt;/string>
+<span class="lineno">   7</span>     &lt;string <span class="errorspan">name="title_activity_new_account">Add Account&lt;/string></span>
+<span class="lineno">   8</span>     &lt;string name="title_activity_account">Accounts&lt;/string>
+<span class="lineno">   9</span>     &lt;string name="title_activity_splash">Splash&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:9</span>: <span class="message">The resource R.string.title_activity_splash appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   6</span>     &lt;string name="title_activity_reports">Reports&lt;/string>
+<span class="lineno">   7</span>     &lt;string name="title_activity_new_account">Add Account&lt;/string>
+<span class="lineno">   8</span>     &lt;string name="title_activity_account">Accounts&lt;/string>
+<span class="lineno">   9</span>     &lt;string <span class="errorspan">name="title_activity_splash">Splash&lt;/string></span>
+<span class="lineno">  10</span>     &lt;string name="title_activity_main">Accounts&lt;/string>
+<span class="lineno">  11</span>     &lt;string name="title_activity_login">LoginActivity&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:10</span>: <span class="message">The resource R.string.title_activity_main appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   7</span>     &lt;string name="title_activity_new_account">Add Account&lt;/string>
+<span class="lineno">   8</span>     &lt;string name="title_activity_account">Accounts&lt;/string>
+<span class="lineno">   9</span>     &lt;string name="title_activity_splash">Splash&lt;/string>
+<span class="lineno">  10</span>     &lt;string <span class="errorspan">name="title_activity_main">Accounts&lt;/string></span>
+<span class="lineno">  11</span>     &lt;string name="title_activity_login">LoginActivity&lt;/string>
+<span class="lineno">  12</span>     &lt;string name="title_activity_signup">SignupActivity&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:28</span>: <span class="message">The resource R.string.NoAccounts appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  25</span>     &lt;string name="Settings">Settings&lt;/string>
+<span class="lineno">  26</span>     &lt;string name="NewAccount">New Account&lt;/string>
+<span class="lineno">  27</span>     &lt;string name="Reports">Reports&lt;/string>
+<span class="lineno">  28</span>     &lt;string <span class="errorspan">name="NoAccounts">No Accounts yet&lt;/string></span>
+<span class="lineno">  29</span>     &lt;string name="dropdown">&lt;/string>
+<span class="lineno">  30</span>     &lt;string name="generate_report">Generate Report&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:53</span>: <span class="message">The resource R.string.title_activity_generated_report appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  50</span>     &lt;string name="bankname_hint">Bankname&lt;/string>
+<span class="lineno">  51</span>     &lt;string name="accountnumber_hint">Account Number&lt;/string>
+<span class="lineno">  52</span>     &lt;string name="balance_hint">Balance&lt;/string>
+<span class="lineno">  53</span>     &lt;string <span class="errorspan">name="title_activity_generated_report">GeneratedReportActivity&lt;/string></span>
+<span class="lineno">  54</span>     &lt;string name="title_activity_generated">Generated Report&lt;/string>
+<span class="lineno">  55</span>     
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:54</span>: <span class="message">The resource R.string.title_activity_generated appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  51</span>     &lt;string name="accountnumber_hint">Account Number&lt;/string>
+<span class="lineno">  52</span>     &lt;string name="balance_hint">Balance&lt;/string>
+<span class="lineno">  53</span>     &lt;string name="title_activity_generated_report">GeneratedReportActivity&lt;/string>
+<span class="lineno">  54</span>     &lt;string <span class="errorspan">name="title_activity_generated">Generated Report&lt;/string></span>
+<span class="lineno">  55</span>     
+<span class="lineno">  56</span>     &lt;string name="title_activity_transactions">Transactions&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:59</span>: <span class="message">The resource R.string.bankname appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  56</span>     &lt;string name="title_activity_transactions">Transactions&lt;/string>
+<span class="lineno">  57</span>     &lt;string name="title_activity_transactionhistory">Transaction History&lt;/string>
+<span class="lineno">  58</span>     
+<span class="lineno">  59</span>     &lt;string <span class="errorspan">name="bankname">Bank Name&lt;/string></span>
+<span class="lineno">  60</span>     &lt;string name="balance">Balance&lt;/string>
+<span class="lineno">  61</span>     &lt;string name="amount_hint">Amount&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:60</span>: <span class="message">The resource R.string.balance appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  57</span>     &lt;string name="title_activity_transactionhistory">Transaction History&lt;/string>
+<span class="lineno">  58</span>     
+<span class="lineno">  59</span>     &lt;string name="bankname">Bank Name&lt;/string>
+<span class="lineno">  60</span>     &lt;string <span class="errorspan">name="balance">Balance&lt;/string></span>
+<span class="lineno">  61</span>     &lt;string name="amount_hint">Amount&lt;/string>
+<span class="lineno">  62</span>     &lt;string name="reason_hint">Reason&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:63</span>: <span class="message">The resource R.string.accountnumber appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  60</span>     &lt;string name="balance">Balance&lt;/string>
+<span class="lineno">  61</span>     &lt;string name="amount_hint">Amount&lt;/string>
+<span class="lineno">  62</span>     &lt;string name="reason_hint">Reason&lt;/string>
+<span class="lineno">  63</span>     &lt;string <span class="errorspan">name="accountnumber">Account Number&lt;/string></span>
+<span class="lineno">  64</span>     &lt;string name="deposit_button_label">Deposit&lt;/string>
+<span class="lineno">  65</span>     &lt;string name="withdraw_button_label">Withdraw&lt;/string>
+</pre>
+</div>
+</div>
+<div class="metadata">Priority: 3 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for unused resources.</div>
+<div class="explanation">
+Unused resources make applications larger and slow down builds.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedResources" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Usability:Icons"></a>
+<div class="category"><a href="#" title="Return to top">Usability:Icons</a><div class="categorySeparator"></div>
+</div>
+<a name="IconLauncherShape"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconLauncherShape: The launcher icon shape should use a distinct silhouette</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/drawable-hdpi/ic_launcher.png">../res/drawable-hdpi/ic_launcher.png</a></span>: <img class="embedimage" align="right" src="../res/drawable-hdpi/ic_launcher.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Checks that launcher icons follow the recommended visual style.</div>
+<div class="explanation">
+According to the Android Design Guide (<a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>) your launcher icons should "use a distinct silhouette", a "three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth."<br/>
+<br/>
+The unique silhouette implies that your launcher icon should not be a filled square.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
+</div><br/>To suppress this error, use the issue id "IconLauncherShape" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconDipSize"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconDipSize: Icon density-independent size validation</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/drawable-xhdpi/ic_launcher.png">../res/drawable-xhdpi/ic_launcher.png</a></span>: <span class="message">The image ic_launcher.png varies significantly in its density-independent (dip) size across the various density versions: drawable-mdpi/ic_launcher.png: 286x211 dp (286x211 px), drawable-hdpi/ic_launcher.png: 191x141 dp (286x211 px), drawable-xhdpi/ic_launcher.png: 143x106 dp (286x211 px)</span><br />
+<ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 2 Additional Locations...</button>
+<div id="Location1Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../res/drawable-hdpi/ic_launcher.png">../res/drawable-hdpi/ic_launcher.png</a></span>
+<li> <span class="location"><a href="../res/drawable-mdpi/ic_launcher.png">../res/drawable-mdpi/ic_launcher.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../res/drawable-xhdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-xhdpi/ic_launcher.png" /></a>
+</td><td><a href="../res/drawable-hdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-hdpi/ic_launcher.png" /></a>
+</td><td><a href="../res/drawable-mdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-mdpi/ic_launcher.png" /></a>
+</td></tr><tr><th>xhdpi</th><th>hdpi</th><th>mdpi</th></tr>
+</table>
+</div>
+<div class="metadata">Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Ensures that icons across densities provide roughly the same density-independent size.</div>
+<div class="explanation">
+Checks the all icons which are provided in multiple densities, all compute to roughly the same density-independent pixel (<code>dip</code>) size. This catches errors where images are either placed in the wrong folder, or icons are changed to new sizes but some folders are forgotten.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "IconDipSize" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconDuplicatesConfig"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconDuplicatesConfig: Identical bitmaps across various configurations</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/drawable-xxhdpi/ic_launcher.png">../res/drawable-xxhdpi/ic_launcher.png</a></span>: <span class="message">The ic_launcher.png icon has identical contents in the following configuration folders: drawable-hdpi, drawable-mdpi, drawable-xhdpi, drawable-xxhdpi</span><br />
+<ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 3 Additional Locations...</button>
+<div id="Location1Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../res/drawable-xhdpi/ic_launcher.png">../res/drawable-xhdpi/ic_launcher.png</a></span>
+<li> <span class="location"><a href="../res/drawable-mdpi/ic_launcher.png">../res/drawable-mdpi/ic_launcher.png</a></span>
+<li> <span class="location"><a href="../res/drawable-hdpi/ic_launcher.png">../res/drawable-hdpi/ic_launcher.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../res/drawable-xhdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-xhdpi/ic_launcher.png" /></a>
+</td><td><a href="../res/drawable-hdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-hdpi/ic_launcher.png" /></a>
+</td><td><a href="../res/drawable-mdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-mdpi/ic_launcher.png" /></a>
+</td><td><a href="../res/drawable-xxhdpi/ic_launcher.png"><img border="0" align="top" src="../res/drawable-xxhdpi/ic_launcher.png" /></a>
+</td></tr><tr><th>xhdpi</th><th>hdpi</th><th>mdpi</th><th>xxhdpi</th></tr>
+</table>
+</div>
+<div class="metadata">Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Finds icons that have identical bitmaps across various configuration parameters.</div>
+<div class="explanation">
+If an icon is provided under different configuration parameters such as <code>drawable-hdpi</code> or <code>-v11</code>, they should typically be different. This detector catches cases where the same icon is provided in different configuration folder which is usually not intentional.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "IconDuplicatesConfig" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconDensities"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconDensities: Icon densities validation</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/drawable-mdpi">../res/drawable-mdpi</a></span>: <span class="message">Missing the following drawables in drawable-mdpi: background.png, ic_action_new.png, ic_action_overflow.png, ic_action_refresh.png, splash.png... (1 more)</span><br />
+<span class="location"><a href="../res/drawable-xhdpi">../res/drawable-xhdpi</a></span>: <span class="message">Missing the following drawables in drawable-xhdpi: background.png, ic_action_new.png, ic_action_overflow.png, ic_action_refresh.png, splash.png... (1 more)</span><br />
+</div>
+<div class="metadata">Priority: 4 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Ensures that icons provide custom versions for all supported densities.</div>
+<div class="explanation">
+Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.<br/>
+<br/>
+Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable <code>ANDROID_LINT_INCLUDE_LDPI=true</code>. For more information on current density usage, see <a href="http://developer.android.com/resources/dashboard/screens.html">http://developer.android.com/resources/dashboard/screens.html</a>
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a>
+</div><br/>To suppress this error, use the issue id "IconDensities" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Usability"></a>
+<div class="category"><a href="#" title="Return to top">Usability</a><div class="categorySeparator"></div>
+</div>
+<a name="AlwaysShowAction"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">AlwaysShowAction: Usage of <code>showAsAction=always</code></a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../res/menu/account.xml">../res/menu/account.xml</a>:8</span>: <span class="message">Prefer "ifRoom" instead of "always"</span><br /><pre class="errorlines">
+<span class="lineno">   5</span>     &lt;item
+<span class="lineno">   6</span>         android:id="@+id/account_menu_refresh"
+<span class="lineno">   7</span>         android:icon="@drawable/ic_action_refresh"
+<span class="lineno">   8</span>         <span class="errorspan">android:showAsAction="always"</span>
+<span class="lineno">   9</span>         android:title="@string/action_refresh"/>
+<span class="lineno">  10</span>     &lt;item
+</pre>
+<ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 2 Additional Locations...</button>
+<div id="Location1Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../res/menu/account.xml">../res/menu/account.xml</a>:13</span>
+<li> <span class="location"><a href="../res/menu/account.xml">../res/menu/account.xml</a>:18</span>
+</ul>
+</div><br/><br/>
+</div>
+<div class="metadata">Priority: 3 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Checks for uses of <code>showAsAction="always"</code> and suggests <code>showAsAction="ifRoom"</code> instead.</div>
+<div class="explanation">
+Using <code>showAsAction="always"</code> in menu XML, or <code>MenuItem.SHOW_AS_ACTION_ALWAYS</code> in Java code is usually a deviation from the user interface style guide.Use <code>ifRoom</code> or the corresponding <code>MenuItem.SHOW_AS_ACTION_IF_ROOM</code> instead.<br/>
+<br/>
+If <code>always</code> is used sparingly there are usually no problems and behavior is roughly equivalent to <code>ifRoom</code> but with preference over other <code>ifRoom</code> items. Using it more than twice in the same menu is a bad idea.<br/>
+<br/>
+This check looks for menu XML files that contain more than two <code>always</code> actions, or some <code>always</code> actions and no <code>ifRoom</code> actions. In Java code, it looks for projects that contain references to <code>MenuItem.SHOW_AS_ACTION_ALWAYS</code> and no references to <code>MenuItem.SHOW_AS_ACTION_IF_ROOM</code>.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/patterns/actionbar.html">http://developer.android.com/design/patterns/actionbar.html</a>
+</div><br/>To suppress this error, use the issue id "AlwaysShowAction" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="MissingIssues"></a>
+<div class="category">Disabled Checks<div class="categorySeparator"></div>
+</div>
+The following issues were not run by lint, either because the check is not enabled by default, or because it was disabled with a command line flag or via one or more lint.xml configuration files in the project directories.
+<br/><br/>
+<a name="BackButton"></a>
+<div class="issue">
+<div class="id">BackButton<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for Back buttons, which are not common on the Android platform.</div>
+<div class="explanation">
+According to the Android Design Guide,<br/>
+<br/>
+"Other platforms use an explicit back button with label to allow the user to navigate up the application's hierarchy. Instead, Android uses the main action bar's app icon for hierarchical navigation and the navigation bar's back button for temporal navigation."<br/>
+This check is not very sophisticated (it just looks for buttons with the label "Back"), so it is disabled by default to not trigger on common scenarios like pairs of Back/Next buttons to paginate through screens.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/patterns/pure-android.html">http://developer.android.com/design/patterns/pure-android.html</a>
+</div><br/>To suppress this error, use the issue id "BackButton" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="EasterEgg"></a>
+<div class="issue">
+<div class="id">EasterEgg<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Security</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for hidden easter eggs.</div>
+<div class="explanation">
+An "easter egg" is code deliberately hidden in the code, both from potential users and even from other developers. This lint check looks for code which looks like it may be hidden from sight.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "EasterEgg" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="FieldGetter"></a>
+<div class="issue">
+<div class="id">FieldGetter<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Suggests replacing uses of getters with direct field access within a class.</div>
+<div class="explanation">
+Accessing a field within the class that defines a getter for that field is at least 3 times faster than calling the getter. For simple getters that do nothing other than return the field, you might want to just reference the local field directly instead.<br/>
+<br/>
+<b>NOTE</b>: As of Android 2.3 (Gingerbread), this optimization is performed automatically by Dalvik, so there is no need to change your code; this is only relevant if you are targeting older versions of Android.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/design/performance.html#internal_get_set">http://developer.android.com/guide/practices/design/performance.html#internal_get_set</a>
+</div><br/>To suppress this error, use the issue id "FieldGetter" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="GradleDynamicVersion"></a>
+<div class="issue">
+<div class="id">GradleDynamicVersion<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for dependencies using a dynamic version rather than a fixed version.</div>
+<div class="explanation">
+Using <code>+</code> in dependencies lets you automatically pick up the latest available version rather than a specific, named version. However, this is not recommended; your builds are not repeatable; you may have tested with a slightly different version than what the build server used. (Using a dynamic version as the major version number is more problematic than using it in the minor version position.)
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "GradleDynamicVersion" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconExpectedSize"></a>
+<div class="issue">
+<div class="id">IconExpectedSize<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Ensures that launcher icons, notification icons etc have the correct size.</div>
+<div class="explanation">
+There are predefined sizes (for each density) for launcher icons. You should follow these conventions to make sure your icons fit in with the overall look of the platform.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
+</div><br/>To suppress this error, use the issue id "IconExpectedSize" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="RtlCompat"></a>
+<div class="issue">
+<div class="id">RtlCompat<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Bi-directional Text</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Looks for compatibility issues with RTL support.</div>
+<div class="explanation">
+API 17 adds a <code>textAlignment</code> attribute to specify text alignment. However, if you are supporting older versions than API 17, you must <b>also</b> specify a gravity or layout_gravity attribute, since older platforms will ignore the <code>textAlignment</code> attribute.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "RtlCompat" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="RtlEnabled"></a>
+<div class="issue">
+<div class="id">RtlEnabled<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 3 / 10<br/>
+Category: Bi-directional Text</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for usages of right-to-left text constants without enabling RTL support.</div>
+<div class="explanation">
+To enable right-to-left support, when running on API 17 and higher, you must set the <code>android:supportsRtl</code> attribute in the manifest <code>&lt;application></code> element.<br/>
+If you have started adding RTL attributes, but have not yet finished the migration, you can set the attribute to false to satisfy this lint check.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "RtlEnabled" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="RtlHardcoded"></a>
+<div class="issue">
+<div class="id">RtlHardcoded<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Bi-directional Text</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for hardcoded left/right constants which could be start/end for bidirectional text.</div>
+<div class="explanation">
+Using <code>Gravity#LEFT</code> and <code>Gravity#RIGHT</code> can lead to problems when a layout is rendered in locales where text flows from right to left. Use <code>Gravity#START</code> and <code>Gravity#END</code> instead. Similarly, in XML <code>gravity</code> and <code>layout_gravity</code> attributes, use <code>start</code> rather than <code>left</code>.<br/>
+For XML attributes such as paddingLeft and <code>layout_marginLeft</code>, use <code>paddingStart</code> and <code>layout_marginStart</code>. <b>NOTE</b>: If your <code>minSdkVersion</code> is less than 17, you should add <b>both</b> the older left/right attributes <b>as well as</b> the new start/right attributes. On older platforms, where RTL is not supported and the start/right attributes are unknown and therefore ignored, you need the older left/right attributes. There is a separate lint check which catches that type of error.<br/>
+(Note: For <code>Gravity#LEFT</code> and <code>Gravity#START</code>, you can use these constants even when targeting older platforms, because the <code>start</code> bitmask is a superset of the <code>left</code> bitmask. Therefore, you can use <code>gravity="start"</code> rather than <code>gravity="left|start"</code>.)
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "RtlHardcoded" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="RtlSymmetry"></a>
+<div class="issue">
+<div class="id">RtlSymmetry<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Bi-directional Text</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Ensures that specifying padding on one side is matched by padding on the other.</div>
+<div class="explanation">
+If you specify padding or margin on the left side of a layout, you should probably also specify padding on the right side (and vice versa) for right-to-left layout symmetry.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "RtlSymmetry" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="SelectableText"></a>
+<div class="issue">
+<div class="id">SelectableText<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 7 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for TextViews which should probably allow their text to be selected.</div>
+<div class="explanation">
+If a <code>&lt;TextView></code> is used to display data, the user might want to copy that data and paste it elsewhere. To allow this, the <code>&lt;TextView></code> should specify <code>android:textIsSelectable="true"</code>.<br/>
+<br/>
+This lint check looks for TextViews which are likely to be displaying data: views whose text is set dynamically. This value will be ignored on platforms older than API 11, so it is okay to set it regardless of your <code>minSdkVersion</code>.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "SelectableText" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="StopShip"></a>
+<div class="issue">
+<div class="id">StopShip<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 10 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for comment markers of the form <code>//STOPSHIP</code> which indicates that code should not be released yet.</div>
+<div class="explanation">
+Using the comment <code>// STOPSHIP</code> can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "StopShip" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="TypographyQuotes"></a>
+<div class="issue">
+<div class="id">TypographyQuotes<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Typography</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for straight quotes which can be replaced by curvy quotes.</div>
+<div class="explanation">
+Straight single quotes and double quotes, when used as a pair, can be replaced by "curvy quotes" (or directional quotes). This can make the text more readable.<br/>
+<br/>
+Note that you should never use grave accents and apostrophes to quote, `like this'.<br/>
+<br/>
+(Also note that you should not use curvy quotes for code fragments.)
+</div>
+<br/><div class="moreinfo">More info: <a href="http://en.wikipedia.org/wiki/Quotation_mark">http://en.wikipedia.org/wiki/Quotation_mark</a>
+</div><br/>To suppress this error, use the issue id "TypographyQuotes" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="UnusedIds"></a>
+<div class="issue">
+<div class="id">UnusedIds<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 1 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Looks for unused id's.</div>
+<div class="explanation">
+This resource id definition appears not to be needed since it is not referenced from anywhere. Having id definitions, even if unused, is not necessarily a bad idea since they make working on layouts and menus easier, so there is not a strong reason to delete these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedIds" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="SuppressInfo"></a>
+<div class="category">Suppressing Warnings and Errors<div class="categorySeparator"></div>
+</div>
+Lint errors can be suppressed in a variety of ways:<br/>
+<br/>
+1. With a @SuppressLint annotation in the Java code<br/>
+2. With a tools:ignore attribute in the XML file<br/>
+3. With a lint.xml configuration file in the project<br/>
+4. With a lint.xml configuration file passed to lint via the --config flag<br/>
+5. With the --ignore flag passed to lint.<br/>
+<br/>
+To suppress a lint warning with an annotation, add a @SuppressLint("id") annotation on the class, method or variable declaration closest to the warning instance you want to disable. The id can be one or more issue id's, such as "UnusedResources" or {"UnusedResources","UnusedIds"}, or it can be "all" to suppress all lint warnings in the given scope.<br/>
+<br/>
+To suppress a lint warning in an XML file, add a tools:ignore="id" attribute on the element containing the error, or one of its surrounding elements. You also need to define the namespace for the tools prefix on the root element in your document, next to the xmlns:android declaration:<br/>
+* xmlns:tools="http://schemas.android.com/tools"<br/>
+<br/>
+To suppress lint warnings with a configuration XML file, create a file named lint.xml and place it at the root directory of the project in which it applies. (If you use the Eclipse plugin's Lint view, you can suppress errors there via the toolbar and Eclipse will create the lint.xml file for you.).<br/>
+<br/>
+The format of the lint.xml file is something like the following:<br/>
+<br/>
+&lt;?xml version="1.0" encoding="UTF-8"?><br/>
+&lt;lint><br/>
+    &lt;!-- Disable this given check in this project --><br/>
+    &lt;issue id="IconMissingDensityFolder" severity="ignore" /><br/>
+<br/>
+    &lt;!-- Ignore the ObsoleteLayoutParam issue in the given files --><br/>
+    &lt;issue id="ObsoleteLayoutParam"><br/>
+        &lt;ignore path="res/layout/activation.xml" /><br/>
+        &lt;ignore path="res/layout-xlarge/activation.xml" /><br/>
+    &lt;/issue><br/>
+<br/>
+    &lt;!-- Ignore the UselessLeaf issue in the given file --><br/>
+    &lt;issue id="UselessLeaf"><br/>
+        &lt;ignore path="res/layout/main.xml" /><br/>
+    &lt;/issue><br/>
+<br/>
+    &lt;!-- Change the severity of hardcoded strings to "error" --><br/>
+    &lt;issue id="HardcodedText" severity="error" /><br/>
+&lt;/lint><br/>
+<br/>
+To suppress lint checks from the command line, pass the --ignore flag with a comma separated list of ids to be suppressed, such as:<br/>
+"lint --ignore UnusedResources,UselessLeaf /my/project/path"<br/>
+
+
+</body>
+</html>

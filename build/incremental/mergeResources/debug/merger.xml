@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/home/thomas/workspace/WALLT/res" >
+            <file
+                path="/home/thomas/workspace/WALLT/res/values-sw720dp-land/dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                name="ic_launcher"
+                path="/home/thomas/workspace/WALLT/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher2"
+                path="/home/thomas/workspace/WALLT/res/drawable-xxhdpi/ic_launcher2.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="splash"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/splash.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_action_overflow"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/ic_action_overflow.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="wallt"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/wallt.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_action_new"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/ic_action_new.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher2"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/ic_launcher2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_action_refresh"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/ic_action_refresh.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="background"
+                path="/home/thomas/workspace/WALLT/res/drawable-hdpi/background.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/thomas/workspace/WALLT/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher2"
+                path="/home/thomas/workspace/WALLT/res/drawable-xhdpi/ic_launcher2.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/thomas/workspace/WALLT/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher2"
+                path="/home/thomas/workspace/WALLT/res/drawable-mdpi/ic_launcher2.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="report_title"
+                path="/home/thomas/workspace/WALLT/res/layout/report_title.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="account_row_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/account_row_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_login"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_login.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_transaction"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_transaction.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="settings_section_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/settings_section_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="spinner_item"
+                path="/home/thomas/workspace/WALLT/res/layout/spinner_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_splash"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_splash.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="settings_row_button_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/settings_row_button_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_signup"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_signup.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="report_twoitem"
+                path="/home/thomas/workspace/WALLT/res/layout/report_twoitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_reports"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_reports.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_new_account"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_new_account.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_generated"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_generated.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="settings_row_two_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/settings_row_two_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="reports_report_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/reports_report_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_transaction_history"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_transaction_history.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_generated"
+                path="/home/thomas/workspace/WALLT/res/layout/fragment_generated.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="reports_date_layout"
+                path="/home/thomas/workspace/WALLT/res/layout/reports_date_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_settings"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_settings.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_account"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_account.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="/home/thomas/workspace/WALLT/res/layout/activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="/home/thomas/workspace/WALLT/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/home/thomas/workspace/WALLT/res/values/strings.xml"
+                qualifiers="" >
+                <string name="title_activity_settings" >Settings
+                </string>
+                <string name="title_activity_transactions" >Transactions
+                </string>
+                <string name="verifypassword_hint" >Retype Password
+                </string>
+                <string name="aboutSection" >ABOUT
+                </string>
+                <string name="accountActionsSection" >ACCOUNT ACTIONS
+                </string>
+                <string name="myAccountSection" >MY ACCOUNT
+                </string>
+                <string name="OK" >OK
+                </string>
+                <string name="bankname_hint" >Bankname
+                </string>
+                <string name="NewAccount" >New Account
+                </string>
+                <string name="balance" >Balance
+                </string>
+                <string name="title_activity_signup" >SignupActivity
+                </string>
+                <string name="username" >Username
+                </string>
+                <string name="preferences_table" >preferences_table
+                </string>
+                <string name="dropdown" ></string>
+                <string name="logout_button_label" >Log out
+                </string>
+                <string name="title_activity_reports" >Reports
+                </string>
+                <string name="accountnumber_hint" >Account Number
+                </string>
+                <string name="bankname" >Bank Name
+                </string>
+                <string name="amount_hint" >Amount
+                </string>
+                <string name="transactiongraphhistory_button_label" >Transaction Graph History
+                </string>
+                <string name="spending_report" >Spending
+                </string>
+                <string name="withdraw_button_label" >Withdraw
+                </string>
+                <string name="reason_hint" >Reason
+                </string>
+                <string name="password_hint" >Password
+                </string>
+                <string name="signup_button_label" >SIGN UP
+                </string>
+                <string name="from" >From
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="title_activity_main" >Accounts
+                </string>
+                <string name="AreYouSure" >Are you sure?
+                </string>
+                <string name="income_report" >Income
+                </string>
+                <string name="title_activity_generated_report" >GeneratedReportActivity
+                </string>
+                <string name="preferences_email" >preferences_email
+                </string>
+                <string name="cashflow_report" >Cash Flow
+                </string>
+                <string name="title_activity_transactionhistory" >Transaction History
+                </string>
+                <string name="preferences_username" >preferences_username
+                </string>
+                <string name="email_hint" >Email
+                </string>
+                <string name="logo" >WALLT Logo
+                </string>
+                <string name="Cancel" >Cancel
+                </string>
+                <string name="accountlisting_report" >Accounts Listing
+                </string>
+                <string name="generate_report" >Generate Report
+                </string>
+                <string name="deposit_button_label" >Deposit
+                </string>
+                <string name="app_version" >Version 1.0
+                </string>
+                <string name="createaccount_button_label" >Create Account
+                </string>
+                <string name="login_button_label" >LOG IN
+                </string>
+                <string name="username_hint" >Username
+                </string>
+                <string name="Settings" >Settings
+                </string>
+                <string name="title_activity_new_account" >Add Account
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+                <string name="NoAccounts" >No Accounts yet
+                </string>
+                <string name="title_activity_account" >Accounts
+                </string>
+                <string name="title_activity_generated" >Generated Report
+                </string>
+                <string name="email" >Email
+                </string>
+                <string name="action_new" >New Icon
+                </string>
+                <string name="action_refresh" >Refresh Icon
+                </string>
+                <string name="to" >To
+                </string>
+                <string name="balance_hint" >Balance
+                </string>
+                <string name="transactionhistory_button_label" >Transaction History
+                </string>
+                <string name="Reports" >Reports
+                </string>
+                <string name="title_activity_splash" >Splash
+                </string>
+                <string name="app_name" >WALLT
+                </string>
+                <string name="accountnumber" >Account Number
+                </string>
+                <string name="title_activity_login" >LoginActivity
+                </string>
+            </file>
+            <file
+                path="/home/thomas/workspace/WALLT/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="/home/thomas/workspace/WALLT/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="NoTitleTheme"
+                    parent="android:Theme.Holo.Light.NoActionBar" >
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="/home/thomas/workspace/WALLT/res/values-v14/styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                name="no_anim"
+                path="/home/thomas/workspace/WALLT/res/anim/no_anim.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_right_away"
+                path="/home/thomas/workspace/WALLT/res/anim/slide_right_away.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="no_anim_show"
+                path="/home/thomas/workspace/WALLT/res/anim/no_anim_show.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="main"
+                path="/home/thomas/workspace/WALLT/res/menu/main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="account"
+                path="/home/thomas/workspace/WALLT/res/menu/account.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="splash"
+                path="/home/thomas/workspace/WALLT/res/menu/splash.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="login"
+                path="/home/thomas/workspace/WALLT/res/menu/login.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="settings"
+                path="/home/thomas/workspace/WALLT/res/menu/settings.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="new_account"
+                path="/home/thomas/workspace/WALLT/res/menu/new_account.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="generated"
+                path="/home/thomas/workspace/WALLT/res/menu/generated.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="reports"
+                path="/home/thomas/workspace/WALLT/res/menu/reports.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="signup"
+                path="/home/thomas/workspace/WALLT/res/menu/signup.xml"
+                qualifiers=""
+                type="menu" />
+        </source>
+        <source path="/home/thomas/workspace/WALLT/build/res/rs/debug" />
+        <source path="/home/thomas/workspace/WALLT/build/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/home/thomas/workspace/WALLT/src/debug/res" />
+    </dataSet>
+
+</merger>

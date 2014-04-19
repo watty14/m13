@@ -1,0 +1,30 @@
+<!-- From: file:/home/thomas/workspace/WALLT/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.example.wallt">
+
+    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="18"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:name="com.example.wallt.WALLTApplication" android:theme="@style/AppTheme">
+        <activity android:label="@string/app_name" android:name="com.example.wallt.views.SplashActivity" android:screenOrientation="portrait" android:theme="@style/NoTitleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.example.wallt.views.MainActivity" android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="org.achartengine.GraphicalActivity"/>
+        <activity android:label="@string/title_activity_login" android:name="com.example.wallt.views.LoginActivity" android:screenOrientation="portrait" android:theme="@style/NoTitleTheme">
+        </activity>
+        <activity android:label="@string/title_activity_signup" android:name="com.example.wallt.views.SignupActivity" android:screenOrientation="portrait" android:theme="@style/NoTitleTheme">
+        </activity>
+    </application>
+
+</manifest>

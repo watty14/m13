@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="bottom"
+    android:fillViewport="true" >
+	
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/splash" >
+	</RelativeLayout>
+	
+</ScrollView>
+<!-- From: file:/home/thomas/workspace/WALLT/res/layout/activity_splash.xml -->
