@@ -1,4 +1,4 @@
-package com.example.wallt;
+package com.example.wallt.views;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,6 +11,9 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import com.example.wallt.models.BankAccount;
+import com.example.wallt.models.Transaction;
+import com.example.wallt.presenters.ServerUtility;
 
 import android.app.Activity;
 import android.content.Context;

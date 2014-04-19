@@ -1,4 +1,4 @@
-package com.example.wallt;
+package com.example.wallt.models;
 
 import java.util.Calendar;
 

@@ -1,7 +1,12 @@
-package com.example.wallt;
+package com.example.wallt.views;
 
 import java.util.HashMap;
 
+import com.example.wallt.R;
+import com.example.wallt.R.anim;
+import com.example.wallt.R.id;
+import com.example.wallt.R.layout;
+import com.example.wallt.presenters.ServerUtility;
 import com.parse.FunctionCallback;
 import com.parse.ParseCloud;
 import com.parse.ParseException;

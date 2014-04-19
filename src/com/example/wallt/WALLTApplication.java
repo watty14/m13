@@ -1,5 +1,7 @@
 package com.example.wallt;
 
+import com.example.wallt.presenters.ServerUtility;
+
 import android.app.Application;
 
 public class WALLTApplication extends Application {

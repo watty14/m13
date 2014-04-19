@@ -1,4 +1,4 @@
-package com.example.wallt;
+package com.example.wallt.presenters;
 
 import android.view.View.OnTouchListener;
 import android.view.MotionEvent;

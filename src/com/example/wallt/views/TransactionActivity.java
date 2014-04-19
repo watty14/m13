@@ -1,5 +1,14 @@
-package com.example.wallt;
+package com.example.wallt.views;
 
+
+import com.example.wallt.R;
+import com.example.wallt.R.id;
+import com.example.wallt.R.layout;
+import com.example.wallt.R.menu;
+import com.example.wallt.R.string;
+import com.example.wallt.models.BankAccount;
+import com.example.wallt.presenters.GestureListener;
+import com.example.wallt.presenters.ServerUtility;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

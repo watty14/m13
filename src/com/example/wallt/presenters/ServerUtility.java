@@ -1,4 +1,4 @@
-package com.example.wallt;
+package com.example.wallt.presenters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +11,8 @@ import org.json.JSONException;
 
 import android.content.Context;
 
+import com.example.wallt.models.BankAccount;
+import com.example.wallt.models.Transaction;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;

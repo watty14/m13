@@ -1,6 +1,13 @@
-package com.example.wallt;
+package com.example.wallt.views;
 
 import java.util.Calendar;
+
+import com.example.wallt.R;
+import com.example.wallt.R.id;
+import com.example.wallt.R.layout;
+import com.example.wallt.R.menu;
+import com.example.wallt.R.string;
+import com.example.wallt.presenters.GestureListener;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

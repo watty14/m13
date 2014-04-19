@@ -1,4 +1,4 @@
-package com.example.wallt;
+package com.example.wallt.views;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,6 +23,8 @@ import org.achartengine.ChartFactory;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
+
+import com.example.wallt.presenters.ReportsUtility;
 
 import android.content.Context;
 import android.content.Intent;

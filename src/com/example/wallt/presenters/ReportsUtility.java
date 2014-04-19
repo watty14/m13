@@ -1,9 +1,11 @@
-package com.example.wallt;
+package com.example.wallt.presenters;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import com.example.wallt.models.BankAccount;
+import com.example.wallt.models.Transaction;
 import com.parse.ParseUser;
 
 /**
