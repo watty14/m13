@@ -41,6 +41,8 @@ public class TransactionActivity extends Fragment {
    private ProgressBar mProgressBar;
    private String objectID;
    private BankAccount account;
+   private int transactionAmount;
+   private ListAdapter arrayAdapter;
 
    private ListView listView;
 
@@ -83,7 +85,7 @@ public class TransactionActivity extends Fragment {
         		R.id.progressBar1);
         account = new BankAccount(objectID, acctNumber,
         		Double.parseDouble(balance), bankname, null);
-        ListAdapter arrayAdapter = new ListAdapter(parentActivity);
+        arrayAdapter = new ListAdapter(parentActivity);
         listView.setAdapter(arrayAdapter);
         mDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +172,7 @@ public class TransactionActivity extends Fragment {
                 return false;
             }
             double amount = Integer.parseInt(amountStr);
+            transactionAmount = (int) amount;
             return instance.depositAmount(account, amount, reasonStr);
         }
 
@@ -180,6 +183,9 @@ public class TransactionActivity extends Fragment {
             if (result) {
                 Toast.makeText(parentActivity, "Deposit successful",
                         Toast.LENGTH_LONG).show();
+                balance = addStrings(balance, "" + transactionAmount);
+                
+                arrayAdapter.notifyDataSetChanged();
                 //((MainActivity) parentActivity).finishFragment();
             } else {
                 Toast.makeText(parentActivity,
@@ -208,6 +214,7 @@ public class TransactionActivity extends Fragment {
                 return false;
             }
             double amount = Integer.parseInt(amountStr);
+            transactionAmount = (int) amount;
             return instance.withdrawAmount(account, amount, reasonStr);
         }
 
@@ -218,9 +225,12 @@ public class TransactionActivity extends Fragment {
             if (result) {
                 Toast.makeText(parentActivity, "Withdrawal successful",
                         Toast.LENGTH_LONG).show();
+                balance = subtractStrings(balance, "" + transactionAmount);
+                
+                arrayAdapter.notifyDataSetChanged();
+                
                 //((MainActivity) parentActivity).finishFragment();
             } else {
-
                 Toast.makeText(parentActivity,
                 		"Failed to withdraw money! Try again.",
                         Toast.LENGTH_LONG).show();
@@ -304,4 +314,25 @@ public class TransactionActivity extends Fragment {
 	        return false;
 	    }
 	}
+    
+    private String addStrings(String str1, String str2) {
+    	double s1 = Double.parseDouble(str1);
+    	double s2 = Double.parseDouble(str2);
+    	double value = s1 + s2;
+    	String balance = "" + value;
+    	return balance;
+    }
+    
+    private String subtractStrings(String str1, String str2) {
+    	double s1 = Double.parseDouble(str1);
+    	double s2 = Double.parseDouble(str2);
+    	double value = s1 - s2;
+    	String balance = "" + value;
+    	return balance;
+    }
+    
+    @Override
+	public void onResume() {
+        super.onResume();
+    } 
 }
