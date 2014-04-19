@@ -13,6 +13,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.PushService;
 
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -42,18 +44,7 @@ public class MainActivity extends Activity {
 	    fragmentTransaction.replace(R.id.container, fragment, null);
 	    fragmentTransaction.addToBackStack(null);
 	    fragmentTransaction.commit();
-	    ParseCloud.callFunctionInBackground("hello",
-	    		new HashMap<String, Object>(),
-	    		new FunctionCallback<String>() {
-	    	  	public void done(final String result,
-	    			  final ParseException e) {
-	    	    if (e == null) {
-	    	    	System.out.println(result);
-	    	    }
-	    	  }
-	    	});
-	    PushService.subscribe(this, ParseUser.getCurrentUser().
-	    			getObjectId(), MainActivity.class);
+	    new BackgroundSound().execute();
 	}
 	
 	public void addFragment(final Fragment fragment, final String tag) {
@@ -88,5 +79,19 @@ public class MainActivity extends Activity {
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.
 				FLAG_ACTIVITY_CLEAR_TASK);
 		startActivity(i);
+	}
+	
+	private class BackgroundSound extends AsyncTask<Void, Void, Void> {
+
+	    @Override
+	    protected Void doInBackground(Void... params) {
+	        MediaPlayer player = MediaPlayer.create(MainActivity.this, R.raw.wii); 
+	        player.setLooping(true); // Set looping 
+	        player.setVolume(100,100); 
+	        player.start(); 
+
+	        return null;
+	    }
+
 	}
 }
